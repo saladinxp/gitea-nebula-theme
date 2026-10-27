@@ -4,7 +4,19 @@
 
 **当前版本：2.1.2 · 适配目标：Gitea 28.2.0 · 生产主题仅使用 CSS**
 
-[English](README.md) · [更新日志](CHANGELOG.md) · [GitHub 版](https://github.com/saladinxp/github-nebula-theme)
+**[下载完整 ZIP](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/gitea-nebula-2.1.2.zip)** · [English](README.md) · [更新日志](CHANGELOG.md) · [GitHub 版](https://github.com/saladinxp/github-nebula-theme)
+
+## 下载、安装和更新入口
+
+| 需要做什么 | 入口 / 操作 |
+| --- | --- |
+| 下载当前完整包（v2.1.2） | **[下载 gitea-nebula-2.1.2.zip](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/gitea-nebula-2.1.2.zip)** |
+| 查找后续版本 | [最新发布](https://github.com/saladinxp/gitea-nebula-theme/releases/latest) · [全部版本](https://github.com/saladinxp/gitea-nebula-theme/releases) |
+| 校验压缩包和单独文件 | [SHA-256 校验清单](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/release-SHA256SUMS.txt) |
+| 首次安装到服务器 | 解压完整包，按[首次安装](#首次安装)部署 CSS、字体和配置 |
+| 更新已有 Nebula CSS | **[下载更新脚本](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)** · [更新步骤](#更新已有-nebula) |
+
+完整 ZIP 包含安装说明、字体、离线预览、源码和许可证，下载后先解压。发布页自动生成的 **Source code** 是仓库快照；需要整理好的发行包时，请下载上面有版本号的 ZIP。
 
 ![浅色文档页](preview/nebula-gitea-document-light.png)
 
@@ -48,7 +60,7 @@
 
 ## 更新已有 Nebula
 
-下载新版 `update-nebula-theme.py`。脚本包含 Nebula 2.0.x 至 2.1.2 的视觉补丁，只依赖 Python 标准库。**必须明确指定 CSS 目录和备份目录**。将下面两个示例路径替换为你自己的实际路径后运行：
+下载新版 **[update-nebula-theme.py](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)**。脚本包含 Nebula 2.0.x 至 2.1.2 的视觉补丁，只依赖 Python 标准库。**必须明确指定 CSS 目录和备份目录**。将下面两个示例路径替换为你自己的实际路径后运行：
 
 ```bash
 python3 update-nebula-theme.py \

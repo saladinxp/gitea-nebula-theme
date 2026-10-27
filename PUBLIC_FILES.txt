@@ -48,3 +48,5 @@ src/upstream/theme-gitea-dark.css
 src/upstream/theme-gitea-light.css
 src/upstream/user.css
 update-nebula-theme.py
+RELEASE_VERSION
+RELEASE_NOTES.md

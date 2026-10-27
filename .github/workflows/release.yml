@@ -1,0 +1,61 @@
+name: Publish release
+
+on:
+  push:
+    branches: [main]
+    paths: [RELEASE_VERSION]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nebula-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.repository == 'saladinxp/gitea-nebula-theme' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build and verify public package
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(cat RELEASE_VERSION)"
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          python3 build-theme.py
+          python3 build-theme.py --check
+          python3 package-theme.py
+          archive="gitea-nebula-${version}.zip"
+          test -s "$archive"
+          mkdir release-assets
+          cp "$archive" release-assets/
+          cp update-nebula-theme.py release-assets/
+          (cd release-assets && sha256sum gitea-nebula-*.zip update-nebula-theme.py > release-SHA256SUMS.txt)
+          (cd release-assets && sha256sum -c release-SHA256SUMS.txt)
+      - name: Upload, verify download, and publish
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          version="$(cat RELEASE_VERSION)"
+          tag="v$version"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists; refusing to replace its files."
+            exit 1
+          fi
+          gh release create "$tag" release-assets/*             --target "$GITHUB_SHA" --title "Nebula for Gitea $version"             --notes-file RELEASE_NOTES.md --draft
+          verify_dir="$RUNNER_TEMP/nebula-release-verification"
+          mkdir -p "$verify_dir"
+          gh release download "$tag" --dir "$verify_dir"
+          (cd "$verify_dir" && sha256sum -c release-SHA256SUMS.txt)
+          gh release edit "$tag" --draft=false --latest

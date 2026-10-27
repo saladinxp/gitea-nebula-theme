@@ -4,7 +4,19 @@ A soft blue-violet theme for Gitea, with light, dark, and system modes, subtle g
 
 **Version 2.1.2 · Target: Gitea 28.2.0 · CSS only**
 
-[简体中文](README.zh-CN.md) · [Changelog](CHANGELOG.md) · [GitHub edition](https://github.com/saladinxp/github-nebula-theme)
+**[Download ZIP](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/gitea-nebula-2.1.2.zip)** · [简体中文](README.zh-CN.md) · [Changelog](CHANGELOG.md) · [GitHub edition](https://github.com/saladinxp/github-nebula-theme)
+
+## Download, install, and update
+
+| What you need | Link / action |
+| --- | --- |
+| Current complete package (v2.1.2) | **[Download gitea-nebula-2.1.2.zip](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/gitea-nebula-2.1.2.zip)** |
+| All releases / future downloads | [Latest release](https://github.com/saladinxp/gitea-nebula-theme/releases/latest) · [Release history](https://github.com/saladinxp/gitea-nebula-theme/releases) |
+| Verify the ZIP and standalone files | [SHA-256 checksums](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/release-SHA256SUMS.txt) |
+| First server installation | Extract the complete ZIP, then follow [Install](#install) (CSS + fonts + configuration) |
+| Update existing Nebula CSS | **[Download updater](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)** · [Update steps](#update-an-existing-nebula-installation) |
+
+The complete ZIP includes installation instructions, optional fonts, offline previews, source files, and licenses. Extract it first. GitHub's automatically generated **Source code** archives are repository snapshots; use the named ZIP above for the prepared package.
 
 ![Nebula light document view](preview/nebula-gitea-document-light.png)
 
@@ -49,7 +61,7 @@ Official references: [customizing Gitea](https://docs.gitea.com/administration/c
 
 ## Update an existing Nebula installation
 
-Download the current `update-nebula-theme.py`. It contains the visual patches for Nebula 2.0.x–2.1.2 and uses only Python's standard library. **Both paths must be supplied explicitly.** For example, after replacing these example paths with your own:
+Download the current **[update-nebula-theme.py](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)**. It contains the visual patches for Nebula 2.0.x–2.1.2 and uses only Python's standard library. **Both paths must be supplied explicitly.** For example, after replacing these example paths with your own:
 
 ```bash
 python3 update-nebula-theme.py \
