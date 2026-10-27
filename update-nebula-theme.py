@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
-"""Apply the Nebula 2.1.2 visual update to three installed themes.
+"""Update three installed Nebula themes on Linux (updater 2.1.3).
 
 Self-contained, Python standard library only. No network requests or service
-restarts. Existing theme data and the final Gitea metadata are retained.
+restarts. Includes the visual patches through 2.1.2. Files are backed up
+before writing; concurrent changes cause the update to stop.
 """
 from datetime import datetime
 import argparse
 from pathlib import Path
 import os
 import re
-import shutil
+import fcntl
+import secrets
 import stat
-import tempfile
 
 NAVBAR_PATCH = r"""/* NEBULA_NAVBAR_2_0_1_BEGIN */
 /* Keep --color-nav-bg a color: badges and avatar rings also use it. */
@@ -352,22 +353,6 @@ PATCHES = (
 META = re.compile(r'gitea-theme-meta-info\s*\{[^{}]*\}\s*\Z')
 
 
-def atomic_write(path, data, info):
-    fd, temporary = tempfile.mkstemp(prefix='.nebula-theme-', suffix='.tmp', dir=path.parent)
-    try:
-        with os.fdopen(fd, 'wb') as stream:
-            if (os.geteuid(), os.getegid()) != (info.st_uid, info.st_gid):
-                os.fchown(stream.fileno(), info.st_uid, info.st_gid)
-            os.fchmod(stream.fileno(), stat.S_IMODE(info.st_mode))
-            stream.write(data)
-            stream.flush()
-            os.fsync(stream.fileno())
-        os.replace(temporary, path)
-    finally:
-        if os.path.exists(temporary):
-            os.unlink(temporary)
-
-
 def prepare_text(text, mode, name):
     meta = META.search(text)
     if not meta or len(re.findall(r'gitea-theme-meta-info\s*\{', text)) != 1:
@@ -389,6 +374,80 @@ def prepare_text(text, mode, name):
     return text[:meta.start()].rstrip() + '\n\n' + '\n\n'.join(pending) + '\n\n' + meta.group()
 
 
+def open_directory(path, create=False):
+    """Open each path component without following symlinks."""
+    fd = os.open(path.anchor, os.O_RDONLY | os.O_DIRECTORY)
+    try:
+        for part in path.parts[1:]:
+            if create:
+                try:
+                    os.mkdir(part, mode=0o700, dir_fd=fd)
+                except FileExistsError:
+                    pass
+            child = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=fd)
+            os.close(fd)
+            fd = child
+        return fd
+    except BaseException:
+        os.close(fd)
+        raise
+
+
+def file_identity(info):
+    return (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns,
+            info.st_ctime_ns, info.st_mode, info.st_uid, info.st_gid)
+
+
+def read_snapshot(directory, name):
+    fd = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=directory)
+    with os.fdopen(fd, 'rb') as stream:
+        before = os.fstat(stream.fileno())
+        if not stat.S_ISREG(before.st_mode):
+            raise RuntimeError(f'不是普通主题文件，尚未写入：{name}')
+        data = stream.read()
+        after = os.fstat(stream.fileno())
+        if file_identity(before) != file_identity(after):
+            raise RuntimeError(f'读取期间文件发生变化，尚未写入：{name}')
+        return data, after
+
+
+def require_snapshot(directory, name, expected):
+    current = read_snapshot(directory, name)
+    if current[0] != expected[0] or file_identity(current[1]) != file_identity(expected[1]):
+        raise RuntimeError(f'文件在检查后发生变化，尚未写入：{name}')
+
+
+def atomic_write(directory, name, data, info, expected):
+    temporary = '.nebula-theme-' + secrets.token_hex(12) + '.tmp'
+    fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
+                 mode=0o600, dir_fd=directory)
+    try:
+        with os.fdopen(fd, 'wb') as stream:
+            if (os.geteuid(), os.getegid()) != (info.st_uid, info.st_gid):
+                os.fchown(stream.fileno(), info.st_uid, info.st_gid)
+            os.fchmod(stream.fileno(), stat.S_IMODE(info.st_mode))
+            stream.write(data)
+            stream.flush()
+            os.fsync(stream.fileno())
+        require_snapshot(directory, name, expected)
+        os.replace(temporary, name, src_dir_fd=directory, dst_dir_fd=directory)
+        os.fsync(directory)
+    finally:
+        try:
+            os.unlink(temporary, dir_fd=directory)
+        except FileNotFoundError:
+            pass
+
+
+def write_backup(directory, name, data):
+    fd = os.open(name, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
+                 mode=0o600, dir_fd=directory)
+    with os.fdopen(fd, 'wb') as stream:
+        stream.write(data)
+        stream.flush()
+        os.fsync(stream.fileno())
+
+
 def update(css_dir, backup_root):
     css_dir, backup_root = Path(css_dir).expanduser(), Path(backup_root).expanduser()
     for label, path in (('CSS', css_dir), ('Backup', backup_root)):
@@ -399,46 +458,63 @@ def update(css_dir, backup_root):
     public_roots = [parent for parent in css_dir.parents if parent.name == 'public']
     if any(backup_root == public or public in backup_root.parents for public in public_roots):
         raise RuntimeError('Backups must be outside the public assets directory.')
-    if not css_dir.is_dir() or css_dir.resolve() != css_dir:
-        raise RuntimeError(f'主题目录不存在或使用了软链接，请先核对：{css_dir}')
-    changes = []
-    for mode in ('light', 'dark', 'auto'):
-        path = css_dir / f'theme-nebula-{mode}.css'
-        if path.is_symlink() or not path.is_file():
-            raise RuntimeError(f'主题文件不存在或为软链接，尚未写入：{path}')
-        original, info = path.read_bytes(), path.stat()
-        updated = prepare_text(original.decode('utf-8'), mode, path.name)
-        if updated is not None:
-            changes.append((path, original, updated.encode('utf-8'), info))
-    if not changes:
-        print('三个主题都已包含 Nebula 2.1.2 视觉更新。浏览器按 Ctrl+F5 刷新即可。')
-        return None
-    backup_root.mkdir(mode=0o700, parents=True, exist_ok=True)
-    stamp = datetime.now().astimezone().strftime('%Y%m%d-%H%M%S')
-    backup = Path(tempfile.mkdtemp(prefix=f'nebula-theme-backup-{stamp}-', dir=backup_root))
-    for path, original, _, _ in changes:
-        if path.read_bytes() != original:
-            raise RuntimeError(f'文件在检查后发生变化，尚未写入：{path.name}')
-        shutil.copy2(path, backup / path.name)
-    written = []
+    directory = open_directory(css_dir)
     try:
-        for path, original, updated, info in changes:
-            atomic_write(path, updated, info)
-            written.append((path, original, info))
-    except Exception as error:
-        restore_failures = []
-        for path, original, info in reversed(written):
-            try:
-                atomic_write(path, original, info)
-            except Exception as restore_error:
-                restore_failures.append(f'{path.name}: {restore_error}')
-        status = ('未能恢复：' + '; '.join(restore_failures)) if restore_failures else '本次已更新的文件已恢复原样。'
-        raise RuntimeError(f'写入失败：{error}。{status} 原文件备份：{backup}') from error
-    print(f'已更新 {len(changes)} 个主题至 Nebula 2.1.2：统一设置页与首页面板、文件树底色及文档阅读区。')
-    print('几何动效：桌面 18/22 秒一轮，上下移动 84/96 像素；手机 32 秒一轮。')
-    print(f'原文件备份：{backup}')
-    print('现在回到 Gitea，按 Ctrl+F5 强制刷新。系统启用“减少动态效果”时，背景会保持静止。')
-    return backup
+        try:
+            fcntl.flock(directory, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            raise RuntimeError('另一个主题更新正在运行，请等它完成后再试。') from None
+        changes = []
+        for mode in ('light', 'dark', 'auto'):
+            name = f'theme-nebula-{mode}.css'
+            original, info = read_snapshot(directory, name)
+            updated = prepare_text(original.decode('utf-8'), mode, name)
+            if updated is not None:
+                changes.append((name, original, updated.encode('utf-8'), info))
+        if not changes:
+            print('三个主题都已包含 Nebula 2.1.2 视觉补丁，无需重复写入。浏览器按 Ctrl+F5 刷新即可。')
+            return None
+        root_fd = open_directory(backup_root, create=True)
+        stamp = datetime.now().astimezone().strftime('%Y%m%d-%H%M%S')
+        backup_name = f'nebula-theme-backup-{stamp}-' + secrets.token_hex(8)
+        try:
+            os.mkdir(backup_name, mode=0o700, dir_fd=root_fd)
+            backup_fd = os.open(backup_name, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW,
+                                dir_fd=root_fd)
+        finally:
+            os.close(root_fd)
+        backup = backup_root / backup_name
+        try:
+            for name, original, _, info in changes:
+                require_snapshot(directory, name, (original, info))
+                write_backup(backup_fd, name, original)
+            os.fsync(backup_fd)
+        finally:
+            os.close(backup_fd)
+        attempted = []
+        try:
+            for name, original, updated, info in changes:
+                attempted.append((name, original, updated, info))
+                atomic_write(directory, name, updated, info, (original, info))
+        except Exception as error:
+            restore_failures = []
+            for name, original, updated, info in reversed(attempted):
+                try:
+                    current = read_snapshot(directory, name)
+                    if current[0] == original:
+                        continue
+                    if current[0] != updated:
+                        raise RuntimeError('检测到其他修改，已保留当前内容，未覆盖')
+                    atomic_write(directory, name, original, info, current)
+                except Exception as restore_error:
+                    restore_failures.append(f'{name}: {restore_error}')
+            status = ('未能自动恢复：' + '; '.join(restore_failures)) if restore_failures else '本次已写入的文件已恢复原样。'
+            raise RuntimeError(f'写入失败：{error}。{status} 原文件备份：{backup}') from error
+        print(f'已更新 {len(changes)} 个主题；原文件备份：{backup}')
+        print('现在回到 Gitea，按 Ctrl+F5 强制刷新。')
+        return backup
+    finally:
+        os.close(directory)
 
 
 if __name__ == '__main__':

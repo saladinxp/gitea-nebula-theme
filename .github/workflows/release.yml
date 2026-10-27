@@ -21,7 +21,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
       - name: Build and verify public package
@@ -32,6 +32,7 @@ jobs:
           [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
           python3 build-theme.py
           python3 build-theme.py --check
+          python3 -m unittest discover -s tests -v
           python3 package-theme.py
           archive="gitea-nebula-${version}.zip"
           test -s "$archive"
@@ -49,11 +50,35 @@ jobs:
           set -euo pipefail
           version="$(cat RELEASE_VERSION)"
           tag="v$version"
+          resolve_tag() {
+            local refs sha kind object
+            refs="$(gh api "repos/$GH_REPO/git/matching-refs/tags/$tag")" || return
+            sha="$(jq -r --arg ref "refs/tags/$tag" '.[] | select(.ref == $ref) | .object.sha' <<< "$refs")" || return
+            kind="$(jq -r --arg ref "refs/tags/$tag" '.[] | select(.ref == $ref) | .object.type' <<< "$refs")" || return
+            while [[ "$kind" == tag ]]; do
+              object="$(gh api "repos/$GH_REPO/git/tags/$sha")" || return
+              sha="$(jq -r '.object.sha' <<< "$object")" || return
+              kind="$(jq -r '.object.type' <<< "$object")" || return
+            done
+            if [[ -n "$sha" && "$kind" != commit ]]; then
+              echo "Release tag does not point to a commit." >&2
+              return 1
+            fi
+            printf '%s' "$sha"
+          }
+          existing_tag="$(resolve_tag)"
+          if [[ -n "$existing_tag" && "$existing_tag" != "$GITHUB_SHA" ]]; then
+            echo "Tag $tag points to another commit; refusing to publish." >&2
+            exit 1
+          fi
           if gh release view "$tag" >/dev/null 2>&1; then
             echo "Release $tag already exists; refusing to replace its files."
             exit 1
           fi
-          gh release create "$tag" release-assets/*             --target "$GITHUB_SHA" --title "Nebula for Gitea $version"             --notes-file RELEASE_NOTES.md --draft
+          gh release create "$tag" release-assets/* \
+            --target "$GITHUB_SHA" --title "Nebula for Gitea $version" \
+            --notes-file RELEASE_NOTES.md --draft
+          [[ "$(resolve_tag)" == "$GITHUB_SHA" ]]
           verify_dir="$RUNNER_TEMP/nebula-release-verification"
           mkdir -p "$verify_dir"
           gh release download "$tag" --dir "$verify_dir"

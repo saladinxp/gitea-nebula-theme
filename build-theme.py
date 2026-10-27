@@ -27,6 +27,9 @@ SRC = ROOT / "src"
 UPSTREAM = SRC / "upstream"
 MANIFEST = ROOT / "metadata" / "source-manifest.json"
 UPSTREAM_COMMIT = "829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1"
+VERSION = (ROOT / "RELEASE_VERSION").read_text(encoding="ascii").strip()
+if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", VERSION):
+    raise SystemExit("Invalid RELEASE_VERSION")
 DISPLAY_NAMES = {"light": "Nebula · 日间", "dark": "Nebula · 夜间", "auto": "Nebula · 自动"}
 META_RE = re.compile(r"gitea-theme-meta-info\s*\{[^}]*\}\s*")
 COMMENT_RE = re.compile(r"/\*.*?\*/", re.S)
@@ -72,7 +75,7 @@ def metadata(mode: str) -> str:
 
 def header(mode: str) -> str:
     return (
-        f"/*! {DISPLAY_NAMES[mode]} — Nebula 2.1.2 for Gitea 28.2.0.\n"
+        f"/*! {DISPLAY_NAMES[mode]} — Nebula {VERSION} for Gitea 28.2.0.\n"
         " * Self-contained official variable baseline + Nebula palette + shared UI.\n"
         f" * Upstream commit: {UPSTREAM_COMMIT}.\n"
         " * Upstream CSS: Copyright The Gitea Authors, MIT License.\n"
@@ -88,7 +91,7 @@ def tokens(css: str) -> set[str]:
 
 
 def validate_stylesheet(css: str, mode: str, baseline: str | None = None) -> None:
-    """Check packaging invariants, without pretending to be a CSS renderer."""
+    """Validate local assets and final theme metadata."""
     clean = COMMENT_RE.sub("", css)
     if re.search(r"@import\b", clean, re.I):
         raise ValueError(f"{mode}: external/base @import is not allowed in a standalone theme")

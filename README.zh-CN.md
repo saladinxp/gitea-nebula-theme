@@ -2,17 +2,17 @@
 
 以紫蓝渐变、浅色阅读面板和几何漂浮为特色的 Gitea 主题，提供日间、夜间与跟随系统三种模式。
 
-**当前版本：2.1.2 · 适配目标：Gitea 28.2.0 · 生产主题仅使用 CSS**
+**当前版本：2.1.3 · 适配目标：Gitea 28.2.0 · 生产主题仅使用 CSS**
 
-**[下载完整 ZIP](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/gitea-nebula-2.1.2.zip)** · [English](README.md) · [更新日志](CHANGELOG.md) · [GitHub 版](https://github.com/saladinxp/github-nebula-theme)
+**[下载完整 ZIP](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.3/gitea-nebula-2.1.3.zip)** · [English](README.md) · [更新日志](CHANGELOG.md) · [GitHub 版](https://github.com/saladinxp/github-nebula-theme)
 
 ## 下载、安装和更新入口
 
 | 需要做什么 | 入口 / 操作 |
 | --- | --- |
-| 下载当前完整包（v2.1.2） | **[下载 gitea-nebula-2.1.2.zip](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/gitea-nebula-2.1.2.zip)** |
+| 下载当前完整包（v2.1.3） | **[下载 gitea-nebula-2.1.3.zip](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.3/gitea-nebula-2.1.3.zip)** |
 | 查找后续版本 | [最新发布](https://github.com/saladinxp/gitea-nebula-theme/releases/latest) · [全部版本](https://github.com/saladinxp/gitea-nebula-theme/releases) |
-| 校验压缩包和单独文件 | [SHA-256 校验清单](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/release-SHA256SUMS.txt) |
+| 校验压缩包和单独文件 | [SHA-256 校验清单](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.3/release-SHA256SUMS.txt) |
 | 首次安装到服务器 | 解压完整包，按[首次安装](#首次安装)部署 CSS、字体和配置 |
 | 更新已有 Nebula CSS | **[下载更新脚本](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)** · [更新步骤](#更新已有-nebula) |
 
@@ -60,7 +60,7 @@
 
 ## 更新已有 Nebula
 
-下载新版 **[update-nebula-theme.py](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)**。脚本包含 Nebula 2.0.x 至 2.1.2 的视觉补丁，只依赖 Python 标准库。**必须明确指定 CSS 目录和备份目录**。将下面两个示例路径替换为你自己的实际路径后运行：
+下载新版 **[update-nebula-theme.py](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)**。脚本包含 Nebula 2.0.x 至 2.1.2 的视觉补丁，在 Linux 上运行，只依赖 Python 标准库。**必须明确指定 CSS 目录和备份目录**。将下面两个示例路径替换为你自己的实际路径后运行：
 
 ```bash
 python3 update-nebula-theme.py \
@@ -68,7 +68,7 @@ python3 update-nebula-theme.py \
   --backup-dir /srv/backups/nebula
 ```
 
-脚本在写入前检查三个已有主题文件，保留最终主题元数据、权限与自定义样式，备份需要修改的原文件。重复运行会跳过已完整应用的补丁。文件缺失、使用软链接或补丁内容被修改时会停止。备份目录必须在公开资源目录之外。
+脚本锁定主题目录，在写入前检查三个已有主题文件，保留最终主题元数据、权限与自定义样式，备份需要修改的原文件。重复运行会跳过已完整应用的补丁。文件缺失、使用软链接或补丁内容被修改时会停止。备份目录必须在公开资源目录之外。如果更新期间其他程序改动文件，脚本会停止并保留该改动。
 
 脚本只更新 CSS，不安装缺失字体、不修改配置、不重启服务。更新后在浏览器按 **Ctrl+F5**。首次安装请使用上面的完整安装步骤。
 

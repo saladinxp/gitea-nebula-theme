@@ -2,21 +2,21 @@
 
 A soft blue-violet theme for Gitea, with light, dark, and system modes, subtle gradients, and floating geometric outlines.
 
-**Version 2.1.2 · Target: Gitea 28.2.0 · CSS only**
+**Version 2.1.3 · Target: Gitea 28.2.0 · CSS only**
 
-**[Download ZIP](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/gitea-nebula-2.1.2.zip)** · [简体中文](README.zh-CN.md) · [Changelog](CHANGELOG.md) · [GitHub edition](https://github.com/saladinxp/github-nebula-theme)
+**[Download ZIP](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.3/gitea-nebula-2.1.3.zip)** · [简体中文](README.zh-CN.md) · [Changelog](CHANGELOG.md) · [GitHub edition](https://github.com/saladinxp/github-nebula-theme)
 
 ## Download, install, and update
 
 | What you need | Link / action |
 | --- | --- |
-| Current complete package (v2.1.2) | **[Download gitea-nebula-2.1.2.zip](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/gitea-nebula-2.1.2.zip)** |
+| Current complete package (v2.1.3) | **[Download gitea-nebula-2.1.3.zip](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.3/gitea-nebula-2.1.3.zip)** |
 | All releases / future downloads | [Latest release](https://github.com/saladinxp/gitea-nebula-theme/releases/latest) · [Release history](https://github.com/saladinxp/gitea-nebula-theme/releases) |
-| Verify the ZIP and standalone files | [SHA-256 checksums](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.2/release-SHA256SUMS.txt) |
+| Verify the ZIP and standalone files | [SHA-256 checksums](https://github.com/saladinxp/gitea-nebula-theme/releases/download/v2.1.3/release-SHA256SUMS.txt) |
 | First server installation | Extract the complete ZIP, then follow [Install](#install) (CSS + fonts + configuration) |
 | Update existing Nebula CSS | **[Download updater](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)** · [Update steps](#update-an-existing-nebula-installation) |
 
-The complete ZIP includes installation instructions, optional fonts, offline previews, source files, and licenses. Extract it first. GitHub's automatically generated **Source code** archives are repository snapshots; use the named ZIP above for the prepared package.
+The complete ZIP includes installation instructions, local fonts, offline previews, source files, and licenses. Extract it first. GitHub's automatically generated **Source code** archives are repository snapshots; use the named ZIP above for the prepared package.
 
 ![Nebula light document view](preview/nebula-gitea-document-light.png)
 
@@ -61,7 +61,7 @@ Official references: [customizing Gitea](https://docs.gitea.com/administration/c
 
 ## Update an existing Nebula installation
 
-Download the current **[update-nebula-theme.py](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)**. It contains the visual patches for Nebula 2.0.x–2.1.2 and uses only Python's standard library. **Both paths must be supplied explicitly.** For example, after replacing these example paths with your own:
+Download the current **[update-nebula-theme.py](https://github.com/saladinxp/gitea-nebula-theme/releases/latest/download/update-nebula-theme.py)**. It contains the visual patches for Nebula 2.0.x–2.1.2 and runs on Linux using only Python's standard library. **Both paths must be supplied explicitly.** For example, after replacing these example paths with your own:
 
 ```bash
 python3 update-nebula-theme.py \
@@ -69,7 +69,7 @@ python3 update-nebula-theme.py \
   --backup-dir /srv/backups/nebula
 ```
 
-The updater checks all three existing theme files before writing, preserves their final Gitea metadata and file permissions, and creates an exact backup of changed files. Re-running it skips complete patches. Missing files, symlinks, or locally modified patch blocks cause it to stop instead of overwriting uncertain input. Backups must be outside public assets.
+The updater locks the theme directory and checks all three existing theme files before writing, preserves their final Gitea metadata and file permissions, and creates an exact backup of changed files. Re-running it skips complete patches. Missing files, symlinks, or locally modified patch blocks cause it to stop instead of overwriting uncertain input. Backups must be outside public assets. If another process changes a file during the update, the script stops and preserves the other process's changes.
 
 The updater changes CSS only; it does not install missing fonts, change `app.ini`, or restart services. After an update, use **Ctrl+F5** to refresh cached styles. For a fresh installation, use the full installation steps above.
 
