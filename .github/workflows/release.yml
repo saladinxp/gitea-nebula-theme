@@ -3,7 +3,7 @@ name: Publish release
 on:
   push:
     branches: [main]
-    paths: [RELEASE_VERSION]
+    paths: [RELEASE_VERSION, .github/workflows/release.yml]
   workflow_dispatch:
 
 permissions:
@@ -66,21 +66,38 @@ jobs:
             fi
             printf '%s' "$sha"
           }
+          # Leave published releases unchanged.
+          if gh release view "$tag" --json isDraft > "$RUNNER_TEMP/nebula-release.json" 2>/dev/null; then
+            if [[ "$(jq -r '.isDraft' "$RUNNER_TEMP/nebula-release.json")" != true ]]; then
+              echo "Release $tag is already published; leaving it unchanged."
+              exit 0
+            fi
+            resume=true
+          else
+            resume=false
+          fi
           existing_tag="$(resolve_tag)"
           if [[ -n "$existing_tag" && "$existing_tag" != "$GITHUB_SHA" ]]; then
             echo "Tag $tag points to another commit; refusing to publish." >&2
             exit 1
           fi
-          if gh release view "$tag" >/dev/null 2>&1; then
-            echo "Release $tag already exists; refusing to replace its files."
-            exit 1
+          if [[ "$resume" == false ]]; then
+            gh release create "$tag" release-assets/* \
+              --target "$GITHUB_SHA" --title "Nebula for Gitea $version" \
+              --notes-file RELEASE_NOTES.md --draft
+          else
+            remote_notes="$(gh release view "$tag" --json body --jq '.body')"
+            [[ "$remote_notes" == "$(cat RELEASE_NOTES.md)" ]]
           fi
-          gh release create "$tag" release-assets/* \
-            --target "$GITHUB_SHA" --title "Nebula for Gitea $version" \
-            --notes-file RELEASE_NOTES.md --draft
-          [[ "$(resolve_tag)" == "$GITHUB_SHA" ]]
           verify_dir="$RUNNER_TEMP/nebula-release-verification"
           mkdir -p "$verify_dir"
           gh release download "$tag" --dir "$verify_dir"
           (cd "$verify_dir" && sha256sum -c release-SHA256SUMS.txt)
-          gh release edit "$tag" --draft=false --latest
+          # Resume a draft only when every uploaded byte matches this build.
+          diff -r release-assets "$verify_dir"
+          if [[ -z "$existing_tag" ]]; then
+            gh api --method POST "repos/$GH_REPO/git/refs" \
+              -f "ref=refs/tags/$tag" -f "sha=$GITHUB_SHA" >/dev/null
+          fi
+          [[ "$(resolve_tag)" == "$GITHUB_SHA" ]]
+          gh release edit "$tag" --target "$GITHUB_SHA" --draft=false --latest
