@@ -1,0 +1,115 @@
+{
+  "repository": "go-gitea/gitea",
+  "ref": "v28.2.0",
+  "commit": "829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1",
+  "license": "MIT; exact upstream license at src/upstream/GITEA-LICENSE",
+  "source_files": [
+    {
+      "local": "src/upstream/theme-gitea-light.css",
+      "source": "web_src/css/themes/theme-gitea-light.css",
+      "git_blob_sha": "3a6a527ff1947a776cd20f36810c012c31b82d78",
+      "sha256": "198f2097c5ed3bb425eb13c2fd663b71183cd74302ab0a28d4a0351450b20106",
+      "url": "https://github.com/go-gitea/gitea/blob/829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1/web_src/css/themes/theme-gitea-light.css"
+    },
+    {
+      "local": "src/upstream/theme-gitea-dark.css",
+      "source": "web_src/css/themes/theme-gitea-dark.css",
+      "git_blob_sha": "224f326612fccd0ee7d68a7521c2bd231df245a4",
+      "sha256": "589b45c055eecc469635c2983a84e6b24c33f94dfbbee5507f18a3fd5777cec4",
+      "url": "https://github.com/go-gitea/gitea/blob/v28.2.0/web_src/css/themes/theme-gitea-dark.css"
+    },
+    {
+      "local": "src/upstream/base.css",
+      "source": "web_src/css/base.css",
+      "git_blob_sha": "c7d84444fbd202f2f0d61874ca6dda66e321346e",
+      "sha256": "1142a81d5afae93574631a1fa0e560a9023b9e6b182bb0e81b9e8c2d58a2f8f8",
+      "url": "https://github.com/go-gitea/gitea/blob/v28.2.0/web_src/css/base.css"
+    },
+    {
+      "local": "src/upstream/modules--navbar.css",
+      "source": "web_src/css/modules/navbar.css",
+      "git_blob_sha": "eacbdedd3b312d471725fef8d08a3704615e8109",
+      "sha256": "ac7a69c301df75c250818f8d8c248cd690740bbfa36a3b71b6ff8f88d6a415da",
+      "url": "https://github.com/go-gitea/gitea/blob/829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1/web_src/css/modules/navbar.css"
+    },
+    {
+      "local": "src/upstream/modules--menu.css",
+      "source": "web_src/css/modules/menu.css",
+      "git_blob_sha": "cbeb4210f33431b45967e46685ada3bc7543c5c0",
+      "sha256": "41cd4712b5cf2421ac5c6902ba70d83d6e4a9b79727f23d8ccc61b43a9cd4472",
+      "url": "https://github.com/go-gitea/gitea/blob/829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1/web_src/css/modules/menu.css"
+    },
+    {
+      "local": "src/upstream/modules--button.css",
+      "source": "web_src/css/modules/button.css",
+      "git_blob_sha": "4efbe538e18a4bc0f48cce47221ae833971f8cc1",
+      "sha256": "94456e5ff30af4938495f96469ebbd3ee1b4b4eb527e8b75aafae780665e520e",
+      "url": "https://github.com/go-gitea/gitea/blob/829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1/web_src/css/modules/button.css"
+    },
+    {
+      "local": "src/upstream/modules--form.css",
+      "source": "web_src/css/modules/form.css",
+      "git_blob_sha": "cc11ac9b3182a331bff77784ce944f97285fb4ee",
+      "sha256": "c33c36c844ad461af995bd11962e562f409dcc3457fc85b860a461c53708ea2b",
+      "url": "https://github.com/go-gitea/gitea/blob/829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1/web_src/css/modules/form.css"
+    },
+    {
+      "local": "src/upstream/user.css",
+      "source": "web_src/css/user.css",
+      "git_blob_sha": "bdc06f72359826f5e02d9590ddc88897a3ab4269",
+      "sha256": "09f1cf17f082ffcc4b70e6a1b98a71ef61bdcbee9287889d81c47754e25db505",
+      "url": "https://github.com/go-gitea/gitea/blob/829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1/web_src/css/user.css"
+    },
+    {
+      "local": "src/upstream/repo.css",
+      "source": "web_src/css/repo.css",
+      "git_blob_sha": "ee9086c6ce34900be109b626222d95cf29537dc9",
+      "sha256": "f8eb0dd1cf5f6feb272de24f211072b0c902f56cc52fd63613bc34a6faced886",
+      "url": "https://github.com/go-gitea/gitea/blob/v28.2.0/web_src/css/repo.css"
+    },
+    {
+      "local": "src/upstream/repo--home.css",
+      "source": "web_src/css/repo/home.css",
+      "git_blob_sha": "9179c86036c1bd25de11e6d8b00ab0bd4a4f5eef",
+      "sha256": "cb774510d3bded53218349dc015243f5754ca6a474a6bb6eeb7422b30015a319",
+      "url": "https://github.com/go-gitea/gitea/blob/829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1/web_src/css/repo/home.css"
+    },
+    {
+      "local": "src/upstream/repo--home-file-list.css",
+      "source": "web_src/css/repo/home-file-list.css",
+      "git_blob_sha": "485c544196fc2a6b5c0f3df34de0f918f75b212c",
+      "sha256": "5361c9bd2b71b5cfa7850d3c3870c95edcbacb88de1170c9294621c62f21222b",
+      "url": "https://github.com/go-gitea/gitea/blob/829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1/web_src/css/repo/home-file-list.css"
+    },
+    {
+      "local": "src/upstream/GITEA-LICENSE",
+      "source": "LICENSE",
+      "git_blob_sha": "a8d4b49dd073a4a38a7e58385eeff7cc52568697",
+      "sha256": "ed2f10a9d78b8c6c9ef33f1420d0eb266981891caf2f15d630553f02dc60d3ae",
+      "url": "https://github.com/go-gitea/gitea/blob/v28.2.0/LICENSE"
+    },
+    {
+      "local": "src/upstream/modules--animations.css",
+      "source": "web_src/css/modules/animations.css",
+      "git_blob_sha": "7ac269b2dacda86c0d519c52a19206a19d802b24",
+      "sha256": "1f6ea06378ff06da3237c83ba6fb00688acb9479660dc5839e1130c2ee68256c",
+      "url": "https://github.com/go-gitea/gitea/blob/v28.2.0/web_src/css/modules/animations.css"
+    }
+  ],
+  "preview_baseline_sources": [
+    "src/upstream/modules--animations.css",
+    "src/upstream/base.css",
+    "src/upstream/modules--navbar.css",
+    "src/upstream/modules--menu.css",
+    "src/upstream/modules--button.css",
+    "src/upstream/modules--form.css",
+    "src/upstream/user.css",
+    "src/upstream/repo.css",
+    "src/upstream/repo--home.css",
+    "src/upstream/repo--home-file-list.css"
+  ],
+  "notes": [
+    "All official source files are byte-for-byte verified by Git blob SHA1 before copying.",
+    "Production themes preserve the full official color baseline, then append the Nebula palette and UI."
+  ]
+}

@@ -1,0 +1,325 @@
+/*
+ * Nebula 2 · interface refinement for Gitea 28.2.0.
+ * Shared production styles. Preview controls are not part of this file.
+ * Preserve native document order, dropdown layers, error states and loaders.
+ */
+:root {
+  --fonts-override: "Sora", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --fonts-monospace: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace, var(--fonts-emoji);
+  --nb-font-display: "Oxanium", "Sora", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --border-radius: 8px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 16px;
+}
+
+body {
+  background-color: var(--color-body);
+  background-image:
+    linear-gradient(180deg, transparent 0, transparent 420px, var(--color-body) 1100px),
+    radial-gradient(900px 500px at 9% 0, var(--nb-aurora-1), transparent 74%),
+    radial-gradient(860px 480px at 98% 1%, var(--nb-aurora-2), transparent 74%),
+    linear-gradient(var(--nb-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--nb-grid) 1px, transparent 1px);
+  background-size: auto, auto, auto, 40px 40px, 40px 40px;
+  background-attachment: fixed;
+}
+::selection { background: var(--color-primary-alpha-30); }
+* { scrollbar-color: var(--color-secondary-dark-2) transparent; }
+
+/* A restrained display face, while controls and long reading stay neutral. */
+h1, h2, h3, .ui.header, .markup h1, .markup h2,
+.repository .repo-header .tw-text-18, .repository .issue-title-header h1 {
+  font-family: var(--nb-font-display);
+  letter-spacing: .005em;
+}
+.markup { line-height: 1.85; }
+.markup h1 { font-size: 30px; letter-spacing: .015em; }
+.markup h2 { font-size: 22px; }
+.markup pre { border: 1px solid var(--color-secondary); border-radius: 10px; }
+.markup code { font-family: var(--fonts-monospace); }
+.markup :is(pre, table) { max-width: 100%; }
+.markup a { text-underline-offset: 3px; }
+
+/* Native navbar: no clipping/isolation, so menus keep their original layer. */
+#navbar {
+  position: relative;
+  padding-inline: 16px;
+  background: var(--color-nav-bg);
+  border-bottom-color: var(--color-secondary);
+  backdrop-filter: saturate(1.2) blur(14px);
+  -webkit-backdrop-filter: saturate(1.2) blur(14px);
+}
+#navbar .navbar-left, #navbar .navbar-right { min-height: 56px; }
+#navbar .navbar-left > .item, #navbar .navbar-right > .item { border-radius: 8px; }
+#navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--color-primary) 35%, var(--nb-cyan) 55%, transparent);
+  background-size: 48% 100%;
+  background-repeat: no-repeat;
+  animation: nebula-scan 11s linear infinite;
+  opacity: .65;
+}
+#navbar-logo img { filter: drop-shadow(0 3px 7px var(--nb-glow)); }
+#navbar .navbar-avatar img { box-shadow: 0 0 0 2px var(--color-nav-bg), 0 0 0 3px var(--color-primary-alpha-30); }
+
+/* NEBULA_NAVBAR_2_0_1_BEGIN */
+/* Keep --color-nav-bg a color: badges and avatar rings also use it. */
+#navbar {
+  background-color: var(--color-nav-bg);
+  background-image: linear-gradient(
+    110deg,
+    color-mix(in srgb, var(--color-nav-bg) 80%, var(--color-primary) 20%) 0%,
+    color-mix(in srgb, var(--color-nav-bg) 95%, var(--color-primary) 5%) 50%,
+    color-mix(in srgb, var(--color-nav-bg) 87%, var(--nb-cyan) 13%) 100%
+  );
+}
+/* NEBULA_NAVBAR_2_0_1_END */
+
+/* Project title keeps the familiar single line, with room for real menus. */
+.repository .secondary-nav {
+  background: transparent !important;
+  border: 0;
+  padding-top: 22px;
+  margin-bottom: 18px;
+}
+.repository .repo-header { gap: 14px; padding-bottom: 8px; }
+.repository .repo-header > .flex-text-block:first-child { gap: 12px; min-width: 0; }
+.repository .repo-header .tw-text-18 {
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 600;
+  min-width: 0;
+}
+.repository .repo-header .tw-text-18 > a:first-child { color: var(--color-text-light); }
+.repository .repo-header .tw-text-18 > a:nth-of-type(2) { color: var(--color-text-dark); }
+.repository .repo-header > .flex-text-block:first-child > :is(svg.svg, .repo-icon):first-child {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-alpha-20);
+  background: color-mix(in srgb, var(--color-box-body) 82%, transparent);
+  border-radius: 11px;
+  padding: 10px;
+  box-shadow: inset 0 1px var(--nb-hairline), 0 6px 22px -14px var(--nb-glow);
+}
+.repository .repo-header .ui.basic.label { border-radius: 999px; white-space: nowrap; }
+.repository .secondary-nav .ui.secondary.pointing.menu {
+  margin-top: 10px;
+  border-bottom: 1px solid var(--color-secondary);
+  background: transparent;
+}
+.ui.secondary.pointing.menu .item { transition: color .18s, background-color .18s; }
+.repository .secondary-nav .ui.secondary.pointing.menu .item {
+  padding: 13px 15px;
+  color: var(--color-text-light);
+  font-weight: 500;
+  border-bottom-width: 2px;
+}
+.repository .secondary-nav .ui.secondary.pointing.menu .active.item,
+.repository .secondary-nav .ui.secondary.pointing.menu .active.item:hover {
+  color: var(--color-text-dark);
+  border-color: var(--color-primary);
+  font-weight: 600;
+  background-image: linear-gradient(0deg, var(--color-primary-alpha-10), transparent 80%);
+  text-shadow: 0 0 14px var(--color-primary-alpha-20);
+}
+.ui.secondary.pointing.menu .item .label { border-radius: 999px; font-size: 11px; }
+
+/* Controls keep full state semantics. Decorative sheen excludes real loaders. */
+.ui.button {
+  transition: background-color .18s, border-color .18s, box-shadow .22s, color .18s;
+  border-color: var(--color-secondary);
+}
+.ui.button:not(.primary, .red, .green, .link, .label, .labeled, .disabled, .is-loading, .loading):not(:disabled):hover {
+  border-color: var(--color-primary-alpha-40);
+  box-shadow: 0 0 0 2px var(--color-primary-alpha-10);
+}
+.ui.primary.button:not(.basic, .labeled, .dropdown, .disabled):not(:disabled),
+.ui.primary.buttons .button:not(.basic, .labeled, .dropdown, .disabled):not(:disabled) {
+  color: #fff;
+  background-color: #6945e5;
+  background-image: var(--nb-grad);
+  border-color: transparent;
+  box-shadow: inset 0 1px 0 #ffffff26, 0 5px 16px -7px var(--nb-glow-strong);
+}
+.ui.primary.button:not(.basic, .labeled, .dropdown, .disabled, .loading, .is-loading):not(:disabled) {
+  position: relative;
+  overflow: hidden;
+}
+.ui.primary.button:not(.basic, .labeled, .dropdown, .disabled, .loading, .is-loading):not(:disabled):hover {
+  box-shadow: inset 0 1px 0 #ffffff33, 0 7px 23px -9px var(--nb-glow-strong);
+}
+.ui.primary.button:not(.basic, .labeled, .dropdown, .disabled, .loading, .is-loading):not(:disabled)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(110deg, transparent 30%, #ffffff24 50%, transparent 70%);
+  transform: translateX(-140%);
+  animation: nebula-sheen 9s ease-in-out infinite;
+}
+.ui.primary.basic.button { background: var(--color-primary-alpha-10); }
+.ui.button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Do not assign normal focus colors to validation failures. */
+.ui.input input, .ui.form :is(input, textarea, select), .ui.selection.dropdown {
+  transition: border-color .18s, box-shadow .18s;
+}
+:where(.ui.input input, .ui.form input, .ui.form textarea, .ui.form select):focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--nb-field-ring);
+}
+.ui.form .field:not(.error) :is(input, textarea, select):not([aria-invalid="true"]):focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--nb-field-ring);
+}
+.ui.form .field.error :is(input, textarea, select):focus,
+.ui.form :is(input, textarea, select)[aria-invalid="true"]:focus {
+  border-color: var(--color-error-border);
+  box-shadow: 0 0 0 3px var(--color-error-bg);
+}
+.ui.form :is(input[type="checkbox"], input[type="radio"]):focus {
+  box-shadow: none;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Native file grid; rows remain display:contents. */
+#repo-files-table {
+  border-color: var(--color-secondary);
+  border-radius: 12px;
+  box-shadow: var(--nb-panel-shadow);
+  margin-top: 14px;
+}
+#repo-files-table .repo-file-last-commit {
+  background: var(--color-box-header);
+  box-shadow: inset 0 1px var(--nb-hairline);
+  padding-block: 12px;
+}
+#repo-files-table .repo-file-cell {
+  padding: 11px 14px;
+  border-top-color: var(--color-secondary);
+  transition: background-color .16s;
+}
+#repo-files-table .repo-file-cell.name { font-size: 14px; }
+#repo-files-table .repo-file-cell.message, #repo-files-table .repo-file-cell.age { font-size: 13px; color: var(--color-text-light-1); }
+#repo-files-table .repo-file-item:hover > .repo-file-cell { background: var(--color-hover-opaque); }
+#repo-files-table .repo-file-item:hover > .repo-file-cell.name { box-shadow: inset 2px 0 var(--color-primary); }
+#repo-files-table .repo-file-line:first-child { border-radius: 11px 11px 0 0; }
+#repo-files-table .repo-file-item:last-child .repo-file-cell:first-child { border-bottom-left-radius: 11px; }
+#repo-files-table .repo-file-item:last-child .repo-file-cell:last-child { border-bottom-right-radius: 11px; }
+.repository .language-stats { height: 6px; border-radius: 99px; }
+.repository .language-stats-details { color: var(--color-text-light); font-size: 12px; }
+.repository .repo-topic-list .ui.label, .repository #repo-topics .ui.label {
+  padding: 5px 10px;
+  border: 1px solid var(--color-primary-alpha-20);
+  border-radius: 99px;
+  color: var(--color-primary);
+  background: var(--color-primary-alpha-10);
+  font-weight: 500;
+}
+.repository .repo-button-row { margin-block: 14px 8px; }
+.repository .readme .ui.attached.header,
+.repository .readme-section .ui.attached.header,
+.ui.top.attached.header {
+  background: var(--color-box-header);
+  border-color: var(--color-secondary);
+  box-shadow: inset 0 1px var(--nb-hairline);
+}
+.repository .readme-section { margin-top: 20px; }
+.repository .readme-section .ui.attached.segment { padding: 26px 28px; }
+.repository .readme-section > .ui.top.attached.header { border-radius: 12px 12px 0 0; }
+.repository .readme-section > .ui.attached.segment { border-radius: 0 0 12px 12px; }
+
+/* Lists, code and discussion use the same quiet surfaces. */
+.ui.segment, .ui.attached.segment { border-color: var(--color-secondary); }
+.ui.cards > .card, .ui.card { border-color: var(--color-secondary); box-shadow: var(--nb-panel-shadow); }
+.ui.card:hover, .ui.cards > .card:hover { border-color: var(--color-primary-alpha-30); }
+.repository .file-content, .repository .diff-file-box { border-color: var(--color-secondary); border-radius: 12px; box-shadow: var(--nb-panel-shadow); }
+.repository .file-header { background: var(--color-box-header); border-color: var(--color-secondary); }
+.repository .file-code { background: var(--color-code-bg); }
+.repository .file-code .lines-num { color: var(--color-text-light-2); }
+.repository .file-code code, .repository .code-diff code { font-size: 13px; line-height: 1.75; }
+.repository .issue.list > .item:hover, .repository .issue.list > .flex-item:hover { background: var(--color-hover); }
+.repository .comment-list .comment > .content {
+  border-color: var(--color-secondary);
+  border-radius: 12px;
+  background: var(--color-box-body);
+  box-shadow: var(--nb-panel-shadow);
+}
+.repository .comment-list .comment-header { background: var(--color-box-header); border-color: var(--color-secondary); }
+.repository .comment-list .content .markup { color: var(--color-text); }
+.dashboard .repo-list { border-color: var(--color-secondary); }
+.dashboard .feeds .news { border-bottom-color: var(--color-secondary); }
+.ui.dropdown .menu, .ui.menu .dropdown.item .menu, .tippy-box {
+  box-shadow: 0 16px 42px -16px var(--color-shadow), 0 0 0 1px var(--color-primary-alpha-10);
+}
+
+/* Sign-in remains the native form, with a calm luminous edge. */
+.page-content.user.signin .ui.top.attached.header,
+.page-content.user.signup .ui.top.attached.header {
+  background-image: linear-gradient(105deg, var(--color-primary-alpha-10), transparent 75%);
+  border-radius: 16px 16px 0 0;
+  padding-block: 20px;
+  font-size: 22px;
+}
+.page-content.user.signin .ui.attached.segment,
+.page-content.user.signup .ui.attached.segment {
+  padding: 26px;
+  box-shadow: 0 24px 65px -35px var(--nb-glow-strong);
+}
+.page-content.user.signin .ui.top.attached.header + .ui.attached.segment,
+.page-content.user.signup .ui.top.attached.header + .ui.attached.segment { border-radius: 0 0 16px 16px; }
+.page-content.user.signin .ui.form .field > label { color: var(--color-text-dark); }
+.page-content.user.signin .ui.form .primary.button { min-height: 42px; }
+
+/* Both Chroma and modern variable-based highlighting share the palette. */
+.chroma :is(.k, .kc, .kd, .kn, .kp, .kr) { color: var(--nb-syn-kw); }
+.chroma :is(.kt, .nc, .nn) { color: var(--nb-syn-type); }
+.chroma :is(.s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .dl) { color: var(--nb-syn-str); }
+.chroma :is(.nf, .fm) { color: var(--nb-syn-fn); }
+.chroma :is(.nb, .bp) { color: var(--nb-syn-builtin); }
+.chroma :is(.m, .mf, .mh, .mi, .mo, .il) { color: var(--nb-syn-num); }
+.chroma :is(.c, .c1, .cm, .cs, .ch, .cp) { color: var(--nb-syn-com); }
+
+@media (max-width: 767.98px) {
+  #navbar { padding-inline: 8px; }
+  .repository .secondary-nav { padding-top: 15px; margin-bottom: 12px; }
+  .repository .repo-header { gap: 12px; }
+  .repository .repo-header > .flex-text-block:first-child { gap: 9px; }
+  .repository .repo-header > .flex-text-block:first-child > :is(svg.svg, .repo-icon):first-child { width: 40px; height: 40px; flex-basis: 40px; padding: 9px; }
+  .repository .repo-header .tw-text-18 { font-size: 18px; overflow-wrap: anywhere; }
+  .repository .secondary-nav .ui.secondary.pointing.menu .item { padding: 11px 12px; }
+  .repository .repo-button-row { gap: 8px; }
+  #repo-files-table { margin-top: 10px; grid-template-columns: minmax(0, 1fr) auto; }
+  #repo-files-table .repo-file-line { grid-column: 1 / -1; }
+  #repo-files-table .repo-file-cell.name { max-width: none; padding: 12px 11px; }
+  #repo-files-table .repo-file-cell.message { display: none; }
+  #repo-files-table .repo-file-cell.age { padding: 12px 11px 12px 6px; font-size: 11px; }
+  #repo-files-table .repo-file-last-commit { padding: 10px 11px; }
+  .repository .readme-section .ui.attached.segment { padding: 20px 18px; }
+  .markup h1 { font-size: 26px; }
+  .markup h2 { font-size: 20px; }
+  .page-content.user.signin .ui.attached.segment { padding: 22px 20px; }
+}
+
+@keyframes nebula-scan { from { background-position: -70% 0; } to { background-position: 170% 0; } }
+@keyframes nebula-sheen { 0%, 70% { transform: translateX(-140%); } 88%, 100% { transform: translateX(140%); } }
+html[data-nebula-motion="off"] #navbar::after,
+html[data-nebula-motion="off"] .ui.primary.button::before { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  #navbar::after, .ui.primary.button::before { animation: none !important; }
+  .ui.button, .ui.input input, .ui.form input, .ui.form textarea,
+  .ui.secondary.pointing.menu .item, #repo-files-table .repo-file-cell { transition: none; }
+}

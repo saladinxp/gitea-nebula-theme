@@ -1,0 +1,114 @@
+/* NEBULA_GEOMETRY_2_1_0_BEGIN */
+/* Nebula 2.1: colored file-list surfaces and two decorative background layers.
+ * The original grid, display:contents rows, loaders and content order remain native.
+ * No script, remote asset, external font or template change is required.
+ */
+#repo-files-table {
+  background-color: color-mix(in srgb, var(--color-body) 92%, var(--color-primary) 8%);
+  background-image: linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--color-body) 84%, var(--color-primary) 16%) 0%,
+    color-mix(in srgb, var(--color-body) 96%, var(--color-primary) 4%) 47%,
+    color-mix(in srgb, var(--color-body) 86%, var(--nb-cyan) 14%) 100%
+  );
+  border-color: color-mix(in srgb, var(--color-secondary) 72%, var(--color-primary) 28%);
+  box-shadow: var(--nb-panel-shadow), inset 0 1px var(--nb-hairline);
+}
+#repo-files-table .repo-file-last-commit {
+  background-color: var(--color-box-header);
+  background-image: linear-gradient(
+    110deg,
+    color-mix(in srgb, var(--color-box-header) 88%, var(--color-primary) 12%),
+    color-mix(in srgb, var(--color-box-header) 94%, var(--nb-cyan) 6%)
+  );
+}
+#repo-files-table .repo-file-item:nth-of-type(even) > .repo-file-cell {
+  background-color: color-mix(in srgb, var(--color-box-body) 15%, transparent);
+}
+#repo-files-table .repo-file-cell.message,
+#repo-files-table .repo-file-cell.age {
+  color: var(--color-text-light);
+}
+#repo-files-table .repo-file-item:is(:hover, :focus-within) > .repo-file-cell,
+#repo-files-table .parent-link:hover {
+  background: color-mix(in srgb, var(--color-body) 80%, var(--color-primary) 20%);
+}
+
+/* A body stacking context keeps negative decorative layers above the body
+ * background and below normal content. Do not transform or clip the body.
+ */
+body {
+  isolation: isolate;
+}
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 82px;
+  width: clamp(126px, 16vw, 246px);
+  height: min(780px, calc(100vh - 130px));
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  background-color: var(--color-primary);
+  opacity: .24;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  mask-mode: alpha;
+  transform-origin: center;
+  animation: nebula-geometry-left 38s ease-in-out infinite;
+}
+body::before {
+  left: clamp(16px, 2vw, 34px);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20760%22%3E%3Cg%20fill%3D%22black%22%20fill-opacity%3D%22.08%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%2232%22%20y%3D%2254%22%20width%3D%22108%22%20height%3D%22108%22%20rx%3D%229%22%20transform%3D%22rotate(17%2086%20108)%22%2F%3E%3Crect%20x%3D%22115%22%20y%3D%22318%22%20width%3D%2254%22%20height%3D%2254%22%20rx%3D%225%22%20transform%3D%22rotate(-16%20142%20345)%22%2F%3E%3Cpath%20d%3D%22M31%20595%20133%20556%20151%20665Z%22%2F%3E%3Cpath%20d%3D%22M53%20595%20123%20570%20136%20646Z%22%20fill%3D%22none%22%20stroke-opacity%3D%22.45%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20760%22%3E%3Cg%20fill%3D%22black%22%20fill-opacity%3D%22.08%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%2232%22%20y%3D%2254%22%20width%3D%22108%22%20height%3D%22108%22%20rx%3D%229%22%20transform%3D%22rotate(17%2086%20108)%22%2F%3E%3Crect%20x%3D%22115%22%20y%3D%22318%22%20width%3D%2254%22%20height%3D%2254%22%20rx%3D%225%22%20transform%3D%22rotate(-16%20142%20345)%22%2F%3E%3Cpath%20d%3D%22M31%20595%20133%20556%20151%20665Z%22%2F%3E%3Cpath%20d%3D%22M53%20595%20123%20570%20136%20646Z%22%20fill%3D%22none%22%20stroke-opacity%3D%22.45%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  animation-delay: -9s;
+}
+body::after {
+  right: clamp(16px, 2vw, 34px);
+  background-color: var(--nb-cyan);
+  opacity: .27;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20760%22%3E%3Cg%20fill%3D%22black%22%20fill-opacity%3D%22.07%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M118%2058%20181%2094%20181%20166%20118%20202%2055%20166%2055%2094Z%22%2F%3E%3Cpath%20d%3D%22M118%2079%20163%20105%20163%20155%20118%20181%2073%20155%2073%20105Z%22%20fill%3D%22none%22%20stroke-opacity%3D%22.4%22%2F%3E%3Crect%20x%3D%2232%22%20y%3D%22430%22%20width%3D%22111%22%20height%3D%22111%22%20rx%3D%228%22%20transform%3D%22rotate(-23%2087%20485)%22%2F%3E%3Crect%20x%3D%22159%22%20y%3D%22640%22%20width%3D%2238%22%20height%3D%2238%22%20rx%3D%224%22%20transform%3D%22rotate(28%20178%20659)%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20760%22%3E%3Cg%20fill%3D%22black%22%20fill-opacity%3D%22.07%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M118%2058%20181%2094%20181%20166%20118%20202%2055%20166%2055%2094Z%22%2F%3E%3Cpath%20d%3D%22M118%2079%20163%20105%20163%20155%20118%20181%2073%20155%2073%20105Z%22%20fill%3D%22none%22%20stroke-opacity%3D%22.4%22%2F%3E%3Crect%20x%3D%2232%22%20y%3D%22430%22%20width%3D%22111%22%20height%3D%22111%22%20rx%3D%228%22%20transform%3D%22rotate(-23%2087%20485)%22%2F%3E%3Crect%20x%3D%22159%22%20y%3D%22640%22%20width%3D%2238%22%20height%3D%2238%22%20rx%3D%224%22%20transform%3D%22rotate(28%20178%20659)%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  animation-name: nebula-geometry-right;
+  animation-duration: 46s;
+  animation-delay: -18s;
+}
+@keyframes nebula-geometry-left {
+  0%, 100% { transform: translate3d(0, 8px, 0) rotate(-2deg); }
+  50% { transform: translate3d(3px, -32px, 0) rotate(2deg); }
+}
+@keyframes nebula-geometry-right {
+  0%, 100% { transform: translate3d(0, -26px, 0) rotate(2deg); }
+  50% { transform: translate3d(-3px, 26px, 0) rotate(-2deg); }
+}
+@media (max-width: 767.98px) {
+  body::before, body::after {
+    width: 126px;
+    opacity: .15;
+    animation-duration: 54s;
+  }
+}
+html[data-nebula-motion="off"] body::before,
+html[data-nebula-motion="off"] body::after {
+  animation: none !important;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after {
+    animation: none !important;
+    transform: none;
+  }
+}
+@supports not (mask-image: linear-gradient(black, black)) {
+  body::before, body::after { display: none; }
+}
+@media print {
+  body::before, body::after { display: none; }
+}
+/* NEBULA_GEOMETRY_2_1_0_END */
+

@@ -1,0 +1,1237 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="nebula-light" data-preview-theme="light" data-nebula-motion="on">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="referrer" content="no-referrer"><title>Nebula 2 · 九页面离线主题预览</title>
+<style id="gitea-baseline">__BASE_CSS__</style>
+<style id="preview-markup-baseline">/* Gitea v28.2.0, 829b49c1ae96015e345f9d2a0eb1ea7acd5f31e1, web_src/css/markup/content.css; MIT, see src/upstream/GITEA-LICENSE. */
+.markup {
+  overflow: hidden;
+  font-size: 14px; /* 14px for comments, overridden to 16px for .file-view below. */
+  line-height: 1.5 !important;
+  overflow-wrap: break-word;
+}
+
+.markup > *:first-child {
+  margin-top: 0 !important;
+}
+
+.markup > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markup a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markup .anchor {
+  float: left;
+  padding-inline-end: 4px;
+  margin-inline-start: -20px;
+  color: inherit;
+}
+
+.markup .anchor .svg {
+  vertical-align: middle;
+}
+
+.markup .anchor:focus {
+  outline: none;
+}
+
+.markup h1 .anchor {
+  margin-top: -2px; /* re-align to center */
+}
+
+.markup h1 .anchor .svg,
+.markup h2 .anchor .svg,
+.markup h3 .anchor .svg,
+.markup h4 .anchor .svg,
+.markup h5 .anchor .svg,
+.markup h6 .anchor .svg {
+  visibility: hidden;
+}
+
+.markup h1:hover .anchor .svg,
+.markup h2:hover .anchor .svg,
+.markup h3:hover .anchor .svg,
+.markup h4:hover .anchor .svg,
+.markup h5:hover .anchor .svg,
+.markup h6:hover .anchor .svg {
+  visibility: visible;
+}
+
+.markup h2 .anchor .svg,
+.markup h3 .anchor .svg,
+.markup h4 .anchor .svg {
+  position: relative;
+  top: -2px;
+}
+
+.markup h1,
+.markup h2,
+.markup h3,
+.markup h4,
+.markup h5,
+.markup h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+}
+
+.markup h1 tt,
+.markup h1 code,
+.markup h2 tt,
+.markup h2 code,
+.markup h3 tt,
+.markup h3 code,
+.markup h4 tt,
+.markup h4 code,
+.markup h5 tt,
+.markup h5 code,
+.markup h6 tt,
+.markup h6 code {
+  font-size: inherit;
+}
+
+.markup h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.markup h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.markup h3 {
+  font-size: 1.25em;
+}
+
+.markup h4 {
+  font-size: 1em;
+}
+
+.markup h5 {
+  font-size: 0.875em;
+}
+
+.markup h6 {
+  font-size: 0.85em;
+  color: var(--color-text-light-2);
+}
+
+.markup p,
+.markup blockquote,
+.markup details,
+.markup ul,
+.markup ol,
+.markup dl,
+.markup table,
+.markup pre,
+.markup math[display="block" i] {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* override p:last-child from base.css.
+Fomantic assumes that <p>/<hX> elements only have margins between elements, but not for the first's top or last's bottom.
+In markup content, we always use bottom margin for all elements */
+.markup p:last-child {
+  margin-bottom: 16px;
+}
+
+.markup hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: var(--color-secondary);
+  border: 0;
+}
+
+.markup ul,
+.markup ol {
+  padding-inline-start: 2em;
+}
+
+.markup .task-list-item {
+  list-style-type: none;
+}
+
+.markup .task-list-item > ul {
+  margin-top: 4px;
+}
+
+.markup .task-list-item p + ul {
+  margin-top: 16px;
+}
+
+.markup .task-list-item input[type="checkbox"] {
+  margin-bottom: 0.25em;
+  margin-inline: -1.4em 0.6em;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.markup .task-list-item input[type="checkbox"] + p {
+  margin-inline-start: -0.2em;
+  display: inline;
+}
+
+.markup .task-list-item > p {
+  margin-inline: 16px;
+}
+
+.markup .task-list-item + .task-list-item {
+  margin-top: 4px;
+}
+
+.markup input[type="checkbox"] {
+  margin-inline-end: .25em;
+  margin-bottom: .25em;
+  cursor: default;
+  opacity: 1 !important; /* override fomantic on edit preview */
+  pointer-events: auto !important; /* override fomantic on edit preview */
+  vertical-align: middle !important; /* override fomantic on edit preview */
+}
+
+.markup ul ul,
+.markup ul ol,
+.markup ol ol,
+.markup ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markup ol ol,
+.markup ul ol {
+  list-style-type: lower-roman;
+}
+
+.markup li > p {
+  margin-top: 16px;
+}
+
+.markup li + li {
+  margin-top: 0.25em;
+}
+
+.markup dl {
+  padding: 0;
+}
+
+.markup dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: var(--font-weight-semibold);
+}
+
+.markup dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markup blockquote {
+  margin-inline-start: 0;
+  padding: 0 15px;
+  color: var(--color-text-light-2);
+  border-left: 0.25em solid var(--color-secondary);
+}
+
+.markup blockquote > :first-child {
+  margin-top: 0;
+}
+
+.markup blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.markup table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.markup table th {
+  font-weight: var(--font-weight-semibold);
+}
+
+.markup table th,
+.markup table td {
+  padding: 6px 13px !important;
+  border: 1px solid var(--color-secondary) !important;
+}
+
+.markup table tr {
+  border-top: 1px solid var(--color-secondary);
+}
+
+.markup table tr:nth-child(2n) {
+  background-color: var(--color-markup-table-row);
+}
+
+.markup img,
+.markup video {
+  max-width: 100%;
+  box-sizing: initial;
+}
+
+/* GitHub-style dark/light image switching.
+   These fragments are kept in the rendered HTML as part of the `src` attribute.
+   We decide which to show via `data-gitea-theme-dark` on `<html>`, which is
+   mirrored from `--is-dark-theme` in JS (so it also works with auto/custom themes).
+*/
+html[data-gitea-theme-dark="true"] .markup a[href*="#gh-light-mode-only"],
+html[data-gitea-theme-dark="true"] .markup img[src*="#gh-light-mode-only"],
+html[data-gitea-theme-dark="false"] .markup a[href*="#gh-dark-mode-only"],
+html[data-gitea-theme-dark="false"] .markup img[src*="#gh-dark-mode-only"] {
+  display: none;
+}
+
+.file-view.markup {
+  padding: 1em 2em;
+  font-size: 16px;
+}
+
+.file-view.markup:has(.file-not-rendered-prompt) {
+  padding: 0; /* let the file-not-rendered-prompt layout itself */
+}
+
+/* this background ensures images can break <hr>. We can only do this on
+   cases where the background is known and not transparent. */
+.file-view.markup img,
+.file-view.markup video,
+.comment-body .markup img, /* regular comment */
+.comment-body .markup video,
+.comment-content .markup img, /* code comment */
+.comment-content .markup video,
+.wiki .markup img,
+.wiki .markup video {
+  background: var(--color-box-body);
+}
+
+.markup img[align="right"],
+.markup video[align="right"] {
+  padding-inline-start: 20px;
+}
+
+.markup img[align="left"],
+.markup video[align="left"] {
+  padding-inline-end: 28px;
+}
+
+.markup code,
+.markup tt {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  white-space: break-spaces;
+  background-color: var(--color-markup-code-inline);
+  border-radius: var(--border-radius);
+}
+
+.markup code br,
+.markup tt br {
+  display: none;
+}
+
+.markup pre > code {
+  font-size: 100%;
+}
+
+.markup .code-block,
+.markup .code-block-container {
+  position: relative;
+}
+
+.markup .code-block-container.code-overflow-wrap pre > code {
+  white-space: pre-wrap;
+}
+
+.markup .code-block-container.code-overflow-scroll pre {
+  overflow-x: auto;
+}
+
+.markup .code-block-container.code-overflow-scroll pre > code {
+  white-space: pre;
+  overflow-wrap: normal;
+}
+
+.markup .highlight {
+  margin-bottom: 16px;
+}
+
+.markup .highlight pre,
+.markup pre {
+  padding: 16px;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: var(--color-markup-code-block);
+  border-radius: var(--border-radius);
+}
+
+.markup .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markup pre code,
+.markup pre tt {
+  display: inline;
+  padding: 0;
+  line-height: inherit;
+  background-color: transparent;
+  border: 0;
+}
+
+.markup pre code::before,
+.markup pre code::after,
+.markup pre tt::before,
+.markup pre tt::after {
+  content: normal;
+}
+
+.markup kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: var(--color-text-light);
+  vertical-align: middle;
+  background-color: var(--color-markup-code-inline);
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-kbd);
+}
+
+.markup details.frontmatter-content summary {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 0.25em;
+}
+
+.markup details.frontmatter-content svg {
+  vertical-align: middle;
+  margin: 0 0.25em;
+}
+
+.external-render-iframe {
+  display: block; /* removes the inline baseline gap below the iframe */
+  width: 100%;
+  height: max(300px, 80vh);
+  border: none;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.markup-content-iframe {
+  display: block;
+  border: none;
+  width: 100%;
+  height: var(--height-loading); /* actual height is set in JS */
+  overflow: hidden;
+  color-scheme: normal; /* match the value inside the iframe to allow it to become transparent */
+}
+
+.markup-block-error {
+  display: block !important; /* override fomantic .ui.form .error.message {display: none} */
+  border: none !important;
+  margin-bottom: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  box-shadow: none !important;
+  font-size: 85% !important;
+  white-space: pre-wrap !important;
+  padding: 0.5rem 1rem !important;
+  text-align: left !important;
+}
+
+.markup-block-error + pre {
+  border-top: none !important;
+  margin-top: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.file-view.markup.orgmode li.unchecked::before {
+  content: "[ ] ";
+}
+
+.file-view.markup.orgmode li.checked::before {
+  content: "[x] ";
+}
+
+.file-view.markup.orgmode li.indeterminate::before {
+  content: "[-] ";
+}
+
+/* This is only needed for <p> because they are literally acting as paragraphs,
+ * and thus having an ::before on the same line would force the paragraph to
+ * move to the next line. This can be avoided by an inline-block display that
+ * avoids that property while still having the other properties of the block
+ * display. */
+.file-view.markup.orgmode li.unchecked > p,
+.file-view.markup.orgmode li.checked > p,
+.file-view.markup.orgmode li.indeterminate > p {
+  display: inline-block;
+}
+
+/* auto-hide-control is a control element or a container for control elements,
+   it floats over the code-block and only shows when the code-block is hovered. */
+.markup .auto-hide-control {
+  position: absolute;
+  z-index: 1;
+  visibility: hidden; /* prevent from click events even opacity=0 */
+  opacity: 0;
+  transition: var(--transition-hover-fade);
+}
+
+/* all rendered code-block elements are in their container,
+the manually written code-block elements on "packages" pages don't have the container */
+.markup .code-block-container:hover .auto-hide-control,
+.markup .code-block:hover .auto-hide-control {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .markup .auto-hide-control {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* can not use regular transparent button colors for hover and active states
+   because we need opaque colors here as code can appear behind the button */
+.markup .auto-hide-control.ui.button:hover,
+.markup .auto-hide-control .ui.button:hover {
+  background: var(--color-secondary) !important;
+}
+
+.markup .auto-hide-control.ui.button:active,
+.markup .auto-hide-control .ui.button:active {
+  background: var(--color-secondary-dark-1) !important;
+}
+
+</style>
+<style id="preview-scaffold">/* Offline preview scaffold: missing Gitea UI primitives and local interactions only.
+   Every application color comes from the installed Nebula CSS variables. */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-height: 100vh; }
+[hidden] { display: none !important; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--color-primary); outline-offset: 3px;
+}
+.ui.container { width: min(1280px, calc(100% - 64px)); margin-inline: auto; }
+.svg { width: 18px; height: 18px; flex-shrink: 0; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.svg.large { width: 24px; height: 24px; }
+.tw-font-normal { font-weight: 400; }
+.tw-flex-wrap { flex-wrap: wrap; }
+.tw-text-18 { font-size: 18px; }
+.tw-flex { display: flex; }
+.tw-gap-2 { gap: 8px; }
+.muted { color: var(--color-text-light); }
+.secondary-nav { background: var(--color-secondary-nav-bg); }
+.repo-header { min-height: 0; padding-top: 0; }
+.repo-header .repo-icon { color: var(--color-text-light-2); }
+.ui.tabs.divider { border-bottom: 1px solid var(--color-secondary); }
+/* Gitea normally sets data-ready after its overflow-menu JS arranges tabs.
+   This offline preview marks its fixed tabs ready and uses horizontal scrolling. */
+overflow-menu.preview-standalone-menu { display: block; visibility: visible; }
+.overflow-menu-items { display: flex; flex-wrap: nowrap; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.overflow-menu-items::-webkit-scrollbar { display: none; }
+.overflow-menu-items > .item { white-space: nowrap; }
+.ui.secondary.pointing.menu .item { margin-block: 0; min-height: 47px; }
+.ui.secondary.pointing.menu .item:before { display: none; }
+.ui.secondary.pointing.menu { margin-bottom: 0; border-bottom: 0; }
+.item-flex-space { flex: 1; }
+.ui.label { display: inline-flex; align-items: center; gap: 4px; padding: .28em .65em; border-radius: var(--border-radius); font-size: 12px; line-height: 1.35; background: var(--color-label-bg); color: var(--color-label-text); }
+.ui.basic.label { background: transparent; border: 1px solid var(--color-secondary); color: var(--color-text-light); }
+.ui.small.label { min-width: 22px; justify-content: center; }
+.ui.header { color: var(--color-text-dark); font-weight: 600; }
+.ui.attached.header { padding: 13px 18px; margin: 0; background: var(--color-box-header); border: 1px solid var(--color-secondary); border-radius: var(--border-radius) var(--border-radius) 0 0; font-size: 14px; }
+.ui.segment { background: var(--color-box-body); border: 1px solid var(--color-secondary); border-radius: var(--border-radius); padding: 18px; }
+.ui.attached.segment { margin-top: -1px; border-radius: 0 0 var(--border-radius) var(--border-radius); }
+.ui.input { display: inline-flex; align-items: center; position: relative; }
+.ui.input input, .ui.form input:not([type="checkbox"], [type="radio"]), .ui.form textarea, .ui.form select { width: 100%; min-width: 0; border: 1px solid var(--color-input-border); background: var(--color-input-background); color: var(--color-input-text); border-radius: var(--border-radius); padding: 9px 12px; outline-offset: 1px; }
+.ui.input input::placeholder, .ui.form input::placeholder, .ui.form textarea::placeholder { color: var(--color-placeholder-text); }
+.ui.form textarea { min-height: 130px; resize: vertical; }
+.ui.form .field { margin-bottom: 20px; }
+.ui.form .field > label { display: block; margin-bottom: 8px; color: var(--color-text-dark); font-weight: 500; }
+.ui.input .svg { position: absolute; left: 11px; color: var(--color-text-light-2); }
+.ui.icon.input input { padding-left: 36px; }
+.global-shortcut-wrapper kbd { position: absolute; right: 9px; color: var(--color-text-light-2); border: 1px solid var(--color-secondary); border-radius: 3px; padding: 0 4px; font-size: 11px; }
+.repo-file-search-container input { padding-right: 35px; width: 180px; }
+.ui.button .svg { width: 16px; height: 16px; }
+.repo-button-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin: 8px 0; }
+.repo-button-row-left, .repo-button-row-right { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.repo-button-row-left { flex: 1; }
+.repo-button-row .ui.button { margin: 0; }
+.repo-home-sidebar-top, .repo-home-sidebar-bottom { line-height: 1.75; }
+.repo-home-sidebar-top p { color: var(--color-text-light); margin: 12px 0 16px; }
+.repo-home-sidebar-header { color: var(--color-text-dark); }
+.repo-topic-list { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 20px; }
+.repo-topic-list .ui.label { background: var(--color-primary-alpha-10); color: var(--color-primary); }
+.repo-sidebar-item { display: flex; align-items: center; gap: 9px; padding-block: 5px; color: var(--color-text-light); }
+.repo-sidebar-section { padding-block: 20px; border-top: 1px solid var(--color-secondary); }
+.repo-sidebar-section h3 { font-size: 15px; margin: 0 0 10px; color: var(--color-text-dark); }
+.repo-sidebar-section p { margin: 5px 0; }
+.repo-meta-count { color: var(--color-text-light-2); font-size: 13px; }
+.language-stats-details { gap: 5px 14px; font-size: 12px; color: var(--color-text-light); }
+.language-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 5px; background: var(--color-primary); }
+.repo-file-last-commit .commit-summary { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.repo-file-last-commit .commit-summary .author { color: var(--color-text-dark); font-weight: 600; margin-right: 6px; }
+.commit-info { color: var(--color-text-light-2); white-space: nowrap; font-size: 12px; }
+.avatar { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 25px; height: 25px; border-radius: 50%; font-size: 11px; font-weight: 600; background: var(--color-primary-alpha-20); color: var(--color-primary); }
+.avatar.medium { width: 32px; height: 32px; }
+#repo-files-table .name .svg { width: 17px; height: 17px; color: var(--color-text-light-2); }
+#repo-files-table .name.directory .svg { color: var(--color-primary); }
+#repo-files-table .name .entry-name { color: var(--color-text); }
+.readme-section { margin-top: 22px; }
+.readme-section .ui.header { display: flex; align-items: center; gap: 9px; }
+.markup { line-height: 1.85; }
+.markup h1, .markup h2, .markup h3 { color: var(--color-text-dark); font-weight: 600; }
+.markup h1 { margin: 4px 0 18px; font-size: 28px; letter-spacing: -.6px; border-bottom: 1px solid var(--color-secondary); padding-bottom: 18px; }
+.markup h2 { margin: 26px 0 12px; font-size: 20px; }
+.markup p { margin: 12px 0; }
+.markup ul { padding-left: 24px; }
+.markup pre { padding: 18px 20px; margin: 16px 0; overflow: auto; background: var(--color-markup-code-block); border-radius: var(--border-radius); color: var(--color-text-light); line-height: 1.7; }
+.markup pre code { background: none; padding: 0; white-space: pre; }
+.markup .comment { color: var(--color-syntax-comment); }
+.markup blockquote { margin: 20px 0; padding: 1px 18px; color: var(--color-text-light); border-left: 3px solid var(--color-primary); }
+.site-footer { margin-top: auto; border-top: 1px solid var(--color-secondary); background: var(--color-footer); color: var(--color-text-light-2); font-size: 12px; padding: 20px 0; }
+.site-footer .ui.container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.page-content { flex: 1; padding-bottom: 55px; }
+.preview-toolbar { flex: none; background: var(--color-box-header); border-bottom: 1px solid var(--color-secondary); color: var(--color-text-light-1); display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 24px; font: 12px/1.5 system-ui, "Microsoft YaHei", sans-serif; }
+.preview-toolbar-title { display: flex; align-items: center; gap: 9px; letter-spacing: .2px; }
+.preview-toolbar-title strong { color: var(--color-text-dark); font-weight: 600; }
+.preview-toolbar .preview-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); }
+.preview-theme-control { display: flex; gap: 2px; padding: 3px; background: var(--color-body); border: 1px solid var(--color-secondary); border-radius: 7px; flex-shrink: 0; }
+.preview-theme-control button { border: 0; background: transparent; color: var(--color-text-light-1); padding: 5px 11px; border-radius: 4px; font-size: 12px; }
+.preview-theme-control button[aria-pressed="true"] { background: var(--color-primary-alpha-20); color: var(--color-primary); }
+.preview-notice { color: var(--color-text-light-2); font-size: 12px; margin: 15px 0 20px; }
+.preview-navbar-brand { font-weight: 600; letter-spacing: .25px; font-size: 16px; }
+.preview-navbar-brand .svg { width: 26px; height: 26px; color: var(--color-primary); }
+#navbar .navbar-mobile-right { display: none; }
+.navbar-search { width: 238px; margin-right: 9px; }
+.navbar-search input { font-size: 12px; }
+.preview-menu-toggle { background: none; border: 0; color: var(--color-nav-text); }
+.preview-dropdown { position: relative; }
+.preview-dropdown > summary { list-style: none; }
+.preview-dropdown > summary::-webkit-details-marker { display: none; }
+.preview-popup { position: absolute; top: calc(100% + 8px); left: 0; width: 260px; max-width: calc(100vw - 40px); z-index: 10; padding: 13px; border: 1px solid var(--color-secondary); border-radius: var(--border-radius); background: var(--color-menu); box-shadow: 0 8px 28px var(--color-shadow); }
+.preview-popup.right { left: auto; right: 0; }
+.preview-popup p { margin: 0 0 10px; color: var(--color-text-light); font-size: 12px; }
+.preview-popup .menu-row { width: 100%; display: flex; justify-content: space-between; align-items: center; border: 0; text-align: left; background: transparent; color: var(--color-text); padding: 9px 7px; border-radius: 4px; }
+.preview-popup .menu-row:hover { background: var(--color-hover); }
+.preview-popup input { width: 100%; font-family: var(--fonts-monospace); font-size: 11px; padding: 9px; border: 1px solid var(--color-secondary); color: var(--color-text); background: var(--color-input-background); border-radius: var(--border-radius); }
+.preview-popup .ui.button { margin-top: 10px; }
+.repo-branch-info { font-size: 12px; color: var(--color-text-light-2); display: inline-flex; align-items: center; gap: 5px; }
+.issue-list-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin: 8px 0 20px; }
+.issue-list-toolbar .ui.input { flex: 1; min-width: 180px; max-width: 620px; }
+.issue-list-toolbar .ui.input input { width: 100%; }
+.issue-list-container { border: 1px solid var(--color-secondary); border-radius: var(--border-radius); overflow: hidden; background: var(--color-box-body); }
+.list-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 13px 18px; background: var(--color-box-header); border-bottom: 1px solid var(--color-secondary); }
+.list-header .state-filters { display: flex; align-items: center; gap: 16px; }
+.state-filter { border: 0; background: transparent; padding: 5px 0; color: var(--color-text-light-2); display: flex; align-items: center; gap: 7px; }
+.state-filter[aria-pressed="true"] { color: var(--color-text-dark); font-weight: 600; }
+.issue-row { display: flex; gap: 14px; padding: 20px 20px; border-top: 1px solid var(--color-secondary); }
+.issue-row:first-child { border-top: 0; }
+.issue-row:hover { background: var(--color-hover); }
+.issue-row .issue-icon { margin-top: 3px; color: var(--color-green); }
+.issue-row.is-closed .issue-icon { color: var(--color-purple); }
+.issue-main { min-width: 0; flex: 1; }
+.issue-title { color: var(--color-text-dark); font-weight: 600; font-size: 15px; }
+.issue-title-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 9px; }
+.issue-meta { color: var(--color-text-light-2); font-size: 12px; }
+.issue-row .comment-count { display: flex; align-items: flex-start; gap: 5px; font-size: 12px; color: var(--color-text-light-2); padding-top: 3px; }
+.issue-row .label-blue { background: var(--color-primary-alpha-10); color: var(--color-primary); }
+.issue-row .label-purple { color: var(--color-purple); background: color-mix(in srgb, var(--color-purple) 14%, transparent); }
+.issue-row .label-green { color: var(--color-green); background: color-mix(in srgb, var(--color-green) 14%, transparent); }
+.issue-row .label-orange { color: var(--color-orange-light); background: color-mix(in srgb, var(--color-orange) 14%, transparent); }
+.issue-empty { padding: 48px 20px; color: var(--color-text-light-2); text-align: center; }
+.issue-footer-note { display: flex; gap: 8px; justify-content: center; color: var(--color-text-light-2); font-size: 12px; padding: 24px 16px; }
+.preview-dialog { margin: auto; width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--color-secondary); background: var(--color-box-body); color: var(--color-text); border-radius: var(--border-radius-medium); box-shadow: 0 24px 80px #0007; }
+.preview-dialog::backdrop { background: #060a11b8; backdrop-filter: blur(3px); }
+.preview-dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 24px; border-bottom: 1px solid var(--color-secondary); background: var(--color-box-header); }
+.preview-dialog-head h2 { margin: 0; font-size: 17px; color: var(--color-text-dark); }
+.preview-dialog-body { padding: 24px; }
+.preview-dialog-body pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; line-height: 1.85; color: var(--color-text-light); margin: 0; }
+.preview-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
+.preview-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 2000; max-width: calc(100vw - 32px); padding: 12px 20px; background: var(--color-menu); border: 1px solid var(--color-secondary); color: var(--color-text-dark); box-shadow: 0 8px 30px #0005; border-radius: var(--border-radius-medium); font-size: 13px; }
+@media (max-width: 900px) { .navbar-search { width: 180px; } .repo-branch-info { display: none; } }
+@media (max-width: 767.98px) {
+  .ui.container { width: calc(100% - 32px); }
+  .preview-toolbar { padding: 8px 13px; gap: 5px; }
+  .preview-toolbar-title { gap: 6px; font-size: 11px; }
+  .preview-toolbar .preview-subtitle { display: none; }
+  .preview-theme-control button { padding: 5px 8px; font-size: 11px; }
+  #navbar .navbar-mobile-right { display: flex; }
+  #navbar { padding-inline: 6px; }
+  #navbar .navbar-left { min-height: 56px; }
+  #navbar .navbar-right { display: none; }
+  .preview-navbar-brand { font-size: 15px; }
+  .repo-header { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .repo-header > .flex-text-block:last-child { gap: 8px; }
+  .repo-header .tw-text-18 { font-size: 18px; }
+  .repo-header .repo-actions .ui.button { font-size: 12px; }
+  .overflow-menu-items { margin-inline: -2px; }
+  .ui.secondary.pointing.menu .item { padding-inline: 13px; }
+  .item-flex-space { display: none; }
+  .repo-home-sidebar-top { padding-block: 0 10px; }
+  .repo-home-sidebar-top p { margin-block: 8px; font-size: 13px; }
+  .repo-home-sidebar-top .repo-sidebar-item { display: none; }
+  .repo-topic-list { margin-bottom: 0; }
+  .repo-button-row { gap: 8px; }
+  .repo-button-row-left { flex: 0 0 auto; }
+  .repo-button-row-right { flex: 1; justify-content: flex-end; }
+  .repo-file-search-container { display: none; }
+  .repo-file-last-commit .commit-info { display: none; }
+  #repo-files-table .repo-file-cell.age { font-size: 12px; }
+  .markup h1 { font-size: 24px; }
+  .markup h2 { font-size: 18px; }
+  .ui.attached.segment { padding: 20px 18px; }
+  .issue-list-toolbar .ui.input { flex-basis: 100%; max-width: none; }
+  .issue-list-toolbar { justify-content: flex-end; }
+  .issue-row { padding: 18px 13px; gap: 10px; }
+  .issue-title { font-size: 14px; }
+  .issue-title-row { gap: 6px; }
+  .issue-row .comment-count { display: none; }
+  .list-header { padding: 11px 13px; }
+  .issue-footer-note { align-items: flex-start; text-align: left; }
+  .preview-dialog-head, .preview-dialog-body { padding: 18px; }
+  .page-content { padding-bottom: 32px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+
+/* Preview controls are outside the application; no bottom overlay. */
+.preview-toolbar { padding: 8px 20px; flex-wrap: wrap; gap: 9px 18px; background: var(--color-box-body); }
+.preview-toolbar-title { flex: 0 0 auto; white-space: nowrap; }
+.preview-toolbar-title strong { letter-spacing: .06em; font-size: 12px; }
+.preview-page-picker { flex: 1; display: flex; justify-content: center; gap: 3px; min-width: 0; }
+.preview-page-picker button, .preview-mode-picker button, .preview-motion-toggle { font: inherit; font-size: 11px; color: var(--color-text-light); background: transparent; border: 1px solid transparent; border-radius: 5px; padding: 5px 8px; white-space: nowrap; }
+.preview-page-picker button[aria-current="page"], .preview-mode-picker button[aria-pressed="true"] { color: var(--color-primary); background: var(--color-primary-alpha-10); border-color: var(--color-primary-alpha-20); }
+.preview-options { display: flex; gap: 6px; align-items: center; }
+.preview-mode-picker { display: flex; gap: 1px; border: 1px solid var(--color-secondary); border-radius: 6px; padding: 2px; }
+.preview-mode-picker button { display: inline-flex; align-items: center; gap: 4px; }
+.preview-mode-picker .svg { width: 13px; height: 13px; }
+.preview-motion-toggle { border-color: var(--color-secondary); }
+.preview-motion-toggle[aria-pressed="true"] { color: var(--color-primary); }
+.preview-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); }
+.preview-menu-toggle { display: inline-flex; align-items: center; padding: 6px; }
+.preview-brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 31px; height: 31px; border-radius: 9px; color: var(--color-white); background: var(--nb-grad); box-shadow: inset 0 1px 0 var(--nb-hairline), 0 4px 14px -6px var(--nb-glow-strong); margin-right: 9px; }
+.preview-brand-mark .svg { width: 20px; height: 20px; color: inherit; }
+.preview-user-avatar { width: 27px; height: 27px; }
+.preview-icon-button { border: 0; background: transparent; color: var(--color-nav-text); padding: 6px; display: inline-flex; align-items: center; }
+#navbar .preview-navbar-brand { display: inline-flex; gap: 0; font-size: 18px; font-family: var(--nb-font-display, var(--fonts-proportional)); font-weight: 700; letter-spacing: .04em; }
+#navbar .navbar-left > .item, #navbar .navbar-right > .item { white-space: nowrap; }
+.repo-header .repo-actions { gap: 7px; }
+.repo-header .repo-icon { display: inline-flex; align-items: center; flex: none; }
+.repo-actions .action-count { border-left: 1px solid var(--color-secondary); padding-left: 8px; margin-left: 3px; font-size: 12px; font-weight: 600; }
+.repo-action-details > summary.ui.button { display: none; }
+.repo-action-details > .repo-actions { display: flex; }
+.repo-overview-details { margin-bottom: 17px; }
+.repo-overview-details > summary { display: none; }
+.repo-overview-content { display: flex; flex-wrap: wrap; gap: 13px 18px; align-items: center; }
+.repo-description { margin: 0; color: var(--color-text-light); font-size: 14px; line-height: 1.7; }
+.repo-overview-content .repo-topic-list { display: flex; flex-wrap: wrap; margin: 0; }
+.repo-language-summary { width: 100%; }
+.repo-language-summary .language-stats { margin: 0 0 6px; height: 6px; }
+.language-stats > span { display: block; height: 100%; }
+.language-go { background: var(--color-teal); }
+.language-ts { background: var(--color-blue); }
+.language-rust { background: var(--color-orange); }
+.language-other { background: var(--color-grey); }
+.language-stats-details { display: flex; flex-wrap: wrap; gap: 6px 17px; }
+.language-stats-details .language-dot { width: 7px; height: 7px; }
+.repo-grid-filelist-only > .repo-home-filelist { min-width: 0; }
+.repo-button-row .repo-file-search-container input { width: 160px; }
+.repo-branch-info { gap: 4px; }
+.repo-branch-info strong { color: var(--color-text-dark); }
+.repo-file-last-commit .commit-sha { font-family: var(--fonts-monospace); color: var(--color-primary); font-size: 12px; }
+.repo-file-last-commit .commit-summary { font-size: 13px; }
+.repo-file-empty { padding: 35px 16px; text-align: center; color: var(--color-text-light); }
+.repo-clone-popup { width: 390px; }
+.repo-clone-popup .clone-url-row { display: flex; align-items: center; gap: 8px; }
+.repo-clone-popup .clone-url-row input { min-width: 0; flex: 1; }
+.repo-clone-popup .clone-url-row button { margin: 0; }
+.repo-clone-popup .clone-protocols { display: flex; gap: 4px; margin-bottom: 10px; }
+.repo-clone-popup .clone-protocols button { padding: 4px 9px; font-size: 11px; border: 1px solid var(--color-secondary); border-radius: 4px; background: var(--color-button); color: var(--color-text-light); }
+.repo-clone-popup .clone-protocols button[aria-pressed="true"] { color: var(--color-primary); border-color: var(--color-primary); }
+.repo-clone-popup p { margin-top: 10px; margin-bottom: 0; }
+.repo-file-search-container .global-shortcut-wrapper { display: inline-flex; }
+.readme-section .ui.header { margin-top: 0; }
+.markup .readme-intro { color: var(--color-text-light); }
+.markup ul { line-height: 1.9; }
+.markup .sample-caption { font-size: 12px; color: var(--color-text-light-2); }
+.breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; font-size: 13px; min-width: 0; }
+.breadcrumb .active { color: var(--color-text-dark); font-weight: 600; }
+.breadcrumb-divider { color: var(--color-text-light-2); }
+.file-content { min-width: 0; max-width: 100%; border: 1px solid var(--color-secondary); border-radius: var(--border-radius-medium); background: var(--color-code-bg); }
+.file-content > .file-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 14px; background: var(--color-box-header); border-bottom: 1px solid var(--color-secondary); }
+.file-content > .file-header:first-child { border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0; }
+.file-header .file-header-left, .file-header .file-header-right { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.file-header .file-header-left { flex: 1; }
+.file-header .file-header-left .commit-summary { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.file-header .file-header-right { flex: none; font-size: 12px; color: var(--color-text-light-2); }
+.file-header .file-info { color: var(--color-text-light); font-size: 12px; }
+.file-body.file-code { overflow: auto; padding-block: 9px; }
+.file-body.file-code table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+.file-body.file-code .lines-num { min-width: 53px; width: 53px; padding: 0 14px 0 8px; text-align: right; user-select: none; color: var(--color-text-light-2); font: 12px/21px var(--fonts-monospace); border: 0; }
+.file-body.file-code .lines-code { padding: 0 20px 0 0; font: 12px/21px var(--fonts-monospace); border: 0; white-space: pre; }
+.file-body.file-code .code-inner { padding: 0; background: transparent; font: inherit; white-space: pre; }
+.file-body.file-code tr.active { background: var(--color-primary-alpha-10); }
+.file-body.file-code tr.active .lines-num { box-shadow: inset 2px 0 var(--color-primary); }
+.chroma .k { color: var(--color-syntax-keyword); }
+.chroma .s { color: var(--color-syntax-string); }
+.chroma .c { color: var(--color-syntax-comment); }
+.chroma .m { color: var(--color-syntax-number); }
+.chroma .t { color: var(--color-syntax-type); }
+.chroma .nf { color: var(--color-syntax-name); }
+.chroma .o { color: var(--color-syntax-operator); }
+.issue-list-toolbar .ui.input { max-width: none; }
+.issue-toolbar-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.issue-filter-select { background: var(--color-button); color: var(--color-text-light); border: 1px solid var(--color-secondary); border-radius: var(--border-radius); padding: 8px 10px; max-width: 120px; }
+.issue-list-container { overflow: visible; }
+.issue-list-container .list-header { border-radius: var(--border-radius) var(--border-radius) 0 0; }
+.issue-row { align-items: flex-start; }
+.issue-row .ui.label { font-size: 11px; }
+.issue-row .issue-main { flex: 1; }
+.issue-row .issue-assignee { margin-top: 1px; }
+.issue-row .issue-meta { margin-top: 6px; line-height: 1.6; }
+.issue-row.is-closed .issue-icon { color: var(--color-purple); }
+.label-bug { color: var(--color-error-text); background: var(--color-error-bg); border: 1px solid var(--color-error-border); }
+.label-feature { color: var(--color-primary); background: var(--color-primary-alpha-10); border: 1px solid var(--color-primary-alpha-30); }
+.label-performance { color: var(--color-info-text); background: var(--color-info-bg); border: 1px solid var(--color-info-border); }
+.label-docs { color: var(--color-success-text); background: var(--color-success-bg); border: 1px solid var(--color-success-border); }
+.label-help { color: var(--color-warning-text); background: var(--color-warning-bg); border: 1px solid var(--color-warning-border); }
+.preview-pr-title { margin: 0 0 14px; }
+.preview-pr-title h1 { margin: 0 0 12px; font-size: 27px; line-height: 1.4; font-weight: 600; color: var(--color-text-dark); }
+.preview-pr-title .index { color: var(--color-text-light-2); }
+.pr-subtitle { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; color: var(--color-text-light); font-size: 13px; }
+.pr-status { display: inline-flex; gap: 6px; align-items: center; border: 1px solid var(--color-success-border); background: var(--color-success-bg); color: var(--color-success-text); border-radius: 999px; padding: 5px 10px; }
+.pr-tabs { display: flex; align-items: center; gap: 5px; border-bottom: 1px solid var(--color-secondary); margin: 20px 0 24px; }
+.pr-tabs button { background: transparent; border: 0; border-bottom: 2px solid transparent; color: var(--color-text-light); padding: 12px 14px; display: inline-flex; align-items: center; gap: 7px; }
+.pr-tabs button[aria-selected="true"] { color: var(--color-text-dark); border-bottom-color: var(--color-primary); }
+.pr-diff-summary { margin-left: auto; font-family: var(--fonts-monospace); font-size: 12px; white-space: nowrap; }
+.pr-diff-summary .added { color: var(--color-diff-added-fg); }
+.pr-diff-summary .removed { color: var(--color-diff-removed-fg); }
+.pr-layout { display: grid; grid-template-columns: minmax(0, 1fr) 245px; gap: 32px; align-items: start; }
+.pr-sidebar .repo-sidebar-section:first-child { border-top: 0; padding-top: 0; }
+.pr-sidebar .repo-sidebar-section { padding-block: 16px; }
+.pr-sidebar .repo-sidebar-section h3 { font-size: 13px; }
+.pr-person { display: flex; align-items: center; gap: 8px; margin-block: 9px; font-size: 13px; }
+.pr-person .muted, .pr-person .approved { margin-left: auto; font-size: 11px; }
+.approved { color: var(--color-success-text); }
+.pr-comment-header { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; padding: 10px 14px; border-bottom: 1px solid var(--color-secondary); background: var(--color-box-header); color: var(--color-text-light); font-size: 13px; }
+.pr-comment-header strong { color: var(--color-text-dark); }
+.pr-comment-body { padding: 15px 17px; font-size: 14.5px; }
+.pr-comment-body p { margin: 0 0 9px; line-height: 1.8; }
+.pr-comment-body p:last-child { margin: 0; }
+.comment-list .timeline-item.comment > .content { border: 1px solid var(--color-secondary); background: var(--color-box-body); }
+.timeline-avatar.avatar { width: 36px; height: 36px; }
+.timeline-item.event > .detail { color: var(--color-text-light); font-size: 13px; line-height: 1.7; }
+.pr-commits { display: grid; gap: 9px; padding: 8px 0; }
+.pr-commit { display: flex; align-items: center; gap: 9px; min-width: 0; font-size: 13px; }
+.pr-commit .commit-message { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.commit-hash { font-family: var(--fonts-monospace); color: var(--color-primary); font-size: 11px; padding: 2px 6px; background: var(--color-primary-alpha-10); border-radius: 4px; }
+.diff-file-box { border: 1px solid var(--color-secondary); background: var(--color-code-bg); border-radius: var(--border-radius); margin: 12px 0; min-width: 0; }
+.diff-file-box .diff-file-header { background: var(--color-box-header); padding: 8px 12px; border-bottom: 1px solid var(--color-secondary); font: 11px/1.6 var(--fonts-monospace); }
+.diff-file-box .code-diff { overflow: auto; padding: 0; }
+.diff-file-box .code-diff table { border-collapse: collapse; width: 100%; }
+.diff-file-box .code-diff .lines-code { padding: 0 15px 0 4px; }
+.diff-file-box .code-diff .lines-num { width: 32px; min-width: 32px; padding: 0 7px; }
+.diff-file-box .code-diff .lines-type-marker { width: 16px; min-width: 16px; font: 12px/21px var(--fonts-monospace); text-align: center; }
+.diff-file-box .tag-code { background: var(--color-diff-inactive); color: var(--color-text-light-2); }
+.pr-checks { border: 1px solid var(--color-success-border); border-radius: var(--border-radius-medium); background: var(--color-box-body); }
+.pr-checks-header { padding: 14px 17px; border-bottom: 1px solid var(--color-secondary); color: var(--color-text-dark); display: flex; gap: 8px; align-items: center; font-weight: 600; }
+.pr-checks-header .svg { color: var(--color-success-text); }
+.pr-check-list { display: grid; gap: 10px; padding: 14px 17px; font-size: 12px; }
+.pr-check-row { display: flex; align-items: center; gap: 9px; }
+.pr-check-row .svg { color: var(--color-success-text); width: 15px; height: 15px; }
+.pr-check-row .muted { margin-left: auto; }
+.pr-merge-actions { padding: 14px 17px; border-top: 1px solid var(--color-secondary); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.pr-merge-actions label { font-size: 12px; color: var(--color-text-light); display: flex; align-items: center; gap: 7px; }
+.pr-empty-tab { padding: 28px; }
+.pr-file-list { margin: 0; padding: 18px 22px; line-height: 2.2; font-family: var(--fonts-monospace); font-size: 13px; }
+.dashboard { padding-top: 25px; }
+.dashboard-navbar { margin-bottom: 18px; display: flex; gap: 8px; align-items: center; }
+.dashboard-grid { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 30px; }
+.dashboard .activity-summary { padding: 18px 20px; margin-bottom: 20px; }
+.dashboard .activity-summary h2 { font-size: 19px; margin: 0 0 16px; font-weight: 600; }
+.dashboard .activity-summary h2 small { font-size: 12px; font-weight: 400; color: var(--color-text-light); margin-left: 7px; }
+.activity-heatmap { overflow-x: auto; padding-bottom: 5px; }
+.activity-heatmap-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7,10px); grid-auto-columns: 10px; gap: 3px; width: max-content; }
+.activity-heatmap-grid span { border-radius: 2px; background: var(--color-secondary-alpha-40); }
+.activity-heatmap-grid [data-level="1"] { background: var(--color-primary-alpha-20); }
+.activity-heatmap-grid [data-level="2"] { background: var(--color-primary-alpha-40); }
+.activity-heatmap-grid [data-level="3"] { background: var(--color-primary-alpha-70); }
+.activity-heatmap-grid [data-level="4"] { background: var(--color-primary); }
+.heatmap-caption { font-size: 11px; color: var(--color-text-light-2); margin-top: 9px; }
+.feeds .news { display: flex; gap: 12px; padding: 17px 2px; border-bottom: 1px solid var(--color-secondary); font-size: 13px; }
+.feeds .news > .content { flex: 1; min-width: 0; }
+.feeds .news .meta { color: var(--color-text-light-2); font-size: 11px; margin-top: 5px; }
+.feeds .news .commit-list { margin-top: 10px; display: grid; gap: 7px; font-size: 12px; }
+.dashboard-repos { padding: 18px; }
+.dashboard-repos h2 { font-size: 15px; margin: 0 0 14px; display: flex; align-items: center; justify-content: space-between; }
+.dashboard-repos .ui.input { width: 100%; margin-bottom: 12px; }
+.dashboard-repos .repo-list { padding: 0; margin: 0; list-style: none; }
+.dashboard-repos .repo-list li { padding: 10px 0; display: flex; gap: 8px; align-items: center; font-size: 12px; }
+.dashboard-repos .repo-list li a { flex: 1; overflow-wrap: anywhere; }
+.dashboard-repos .repo-list li .svg { width: 15px; height: 15px; color: var(--color-text-light-2); }
+.dashboard-repos .repo-list .stars { color: var(--color-text-light-2); white-space: nowrap; font-size: 11px; }
+.user.signin { padding-top: 56px; }
+.user.signin > .ui.container { width: min(440px, calc(100% - 32px)); }
+.user.signin .signin-brand { text-align: center; margin-bottom: 24px; }
+.user.signin .signin-brand .preview-brand-mark { width: 46px; height: 46px; border-radius: 12px; margin: 0 0 12px; }
+.user.signin .signin-brand .svg { width: 26px; height: 26px; }
+.user.signin .signin-brand p { font-size: 12px; color: var(--color-text-light-2); margin: 0; }
+.user.signin .ui.top.attached.header { text-align: center; padding: 19px; font-size: 19px; }
+.user.signin .ui.attached.segment { padding: 24px 27px; }
+.user.signin .ui.form .field { margin-bottom: 18px; }
+.user.signin .ui.form .field > label { font-size: 13px; }
+.signin-password-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px; }
+.signin-password-label label { font-weight: 500; color: var(--color-text-dark); }
+.signin-password-label a { font-size: 12px; }
+.user.signin .ui.form .field > label.signin-remember { display: inline-flex; align-items: center; gap: 8px; color: var(--color-text-light); font-size: 12px; white-space: nowrap; margin: 0; }
+.user.signin .ui.form input[type="checkbox"] { width: var(--checkbox-size, 14px); height: var(--checkbox-size, 14px); flex: 0 0 auto; margin: 0; padding: 0; }
+.signin-submit { width: 100%; min-height: 38px; }
+.ui.form .field .error.message { margin-top: 7px; font-size: 12px; color: var(--color-error-text); background: transparent; padding: 0; border: 0; }
+.signin-local-result { margin-top: 15px; border: 1px solid var(--color-info-border); background: var(--color-info-bg); color: var(--color-info-text); font-size: 12px; padding: 10px 12px; border-radius: var(--border-radius); line-height: 1.7; }
+.signin-demo-actions { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+.signin-demo-actions button { background: none; border: 0; padding: 4px; font-size: 11px; color: var(--color-text-light-2); text-decoration: underline; text-underline-offset: 3px; }
+.signin-note { text-align: center; margin: 16px 0; font-size: 11px; line-height: 1.8; color: var(--color-text-light-2); }
+.avatar { background: linear-gradient(135deg, var(--color-pink-light), var(--color-primary)); color: var(--color-white); font-weight: 600; box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-white) 35%, transparent), 0 2px 7px var(--color-shadow); }
+.avatar.avatar-c { background: linear-gradient(135deg, var(--nb-cyan), var(--color-blue)); color: var(--color-white); }
+.avatar.avatar-w { background: linear-gradient(135deg, var(--color-yellow), var(--color-orange)); color: var(--color-console-bg); }
+.avatar.avatar-z { background: linear-gradient(135deg, var(--color-green-light), var(--color-teal)); color: var(--color-console-bg); }
+.avatar.avatar-h { background: linear-gradient(135deg, var(--color-purple), var(--color-pink-light)); color: var(--color-white); }
+.preview-user-avatar { box-shadow: 0 0 0 2px var(--color-nav-bg), 0 0 0 3px var(--color-primary-alpha-40); }
+.preview-dialog-body p { margin-top: 0; line-height: 1.8; }
+.preview-toast { bottom: 20px; }
+@media (max-width: 1100px) {
+  .preview-toolbar-title .preview-subtitle { display: none; }
+  .preview-page-picker { justify-content: flex-start; }
+  .preview-toolbar { gap: 8px; }
+  .preview-options { margin-left: auto; }
+  .dashboard-grid { grid-template-columns: minmax(0,1fr) 250px; gap: 20px; }
+}
+@media (max-width: 767.98px) {
+  .preview-toolbar { padding: 7px 12px; gap: 6px; }
+  .preview-toolbar-title { font-size: 10px; }
+  .preview-toolbar-title strong { font-size: 10px; }
+  .preview-options { margin-left: auto; gap: 4px; }
+  .preview-mode-picker button { padding: 4px 5px; font-size: 10px; gap: 3px; }
+  .preview-mode-picker .svg { width: 11px; height: 11px; }
+  .preview-motion-toggle { padding: 5px; font-size: 10px; }
+  .preview-page-picker { order: 3; flex-basis: 100%; overflow-x: auto; scrollbar-width: none; }
+  .preview-page-picker button { padding: 4px 7px; font-size: 10px; }
+  #navbar .navbar-left { gap: 0; }
+  #navbar .navbar-left > .item:not(:first-child) { display: none; }
+  #navbar .navbar-mobile-right { display: flex; align-items: center; gap: 3px; }
+  #navbar .preview-navbar-brand { font-size: 17px; }
+  #navbar .navbar-left, #navbar .navbar-mobile-right { min-height: 52px; }
+  .repo-header { flex-direction: row; align-items: flex-start; flex-wrap: wrap; gap: 10px; min-height: 0; }
+  .repo-header > .flex-text-block:first-child { min-width: 0; flex-wrap: wrap; gap: 7px; flex: 1; }
+  .repo-header .tw-text-18 { display: flex; gap: 5px; font-size: 17px; flex-wrap: wrap; min-width: 0; }
+  .repo-header .tw-text-18 a { overflow-wrap: anywhere; }
+  .repo-header .repo-icon > .svg { width: 20px; height: 20px; }
+  .repo-header .repo-visibility { font-size: 10px; }
+  .repo-action-details { position: relative; flex: 0 0 auto; align-self: flex-start; }
+  .repo-action-details > summary.ui.button { display: inline-flex; font-size: 11px; list-style: none; }
+  .repo-action-details > summary::-webkit-details-marker { display: none; }
+  .repo-action-details > .repo-actions { position: absolute; z-index: 20; right: 0; top: calc(100% + 7px); min-width: 190px; display: flex; flex-direction: column; align-items: stretch; gap: 7px; padding: 10px; border: 1px solid var(--color-secondary); border-radius: var(--border-radius); background: var(--color-menu); box-shadow: 0 8px 24px var(--color-shadow); }
+  .repo-action-details > .repo-actions > button { width: 100%; margin: 0; justify-content: flex-start; }
+  .repo-action-details:not([open]) > .repo-actions { display: none; }
+  .repo-overview-details { border-bottom: 1px solid var(--color-secondary); margin-bottom: 13px; }
+  .repo-overview-details > summary { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; cursor: pointer; color: var(--color-text-light); font-size: 12px; }
+  .repo-overview-details > summary::-webkit-details-marker { display: none; }
+  .repo-overview-content { padding: 3px 0 13px; gap: 10px; }
+  .repo-overview-details:not([open]) > .repo-overview-content { display: none; }
+  .repo-description { font-size: 12px; }
+  .repo-overview-content .repo-topic-list { gap: 5px; }
+  .repo-language-summary .language-stats-details { font-size: 11px; }
+  .repo-button-row { gap: 7px; flex-wrap: nowrap; }
+  .repo-button-row .repo-button-row-left { flex: 0 0 auto; }
+  .repo-button-row .repo-button-row-right { flex: 1; justify-content: flex-end; gap: 6px; }
+  .repo-button-row .repo-add-file { display: none; }
+  .repo-button-row .ui.button { font-size: 11px; }
+  .repo-file-search-container { display: none; }
+  .repo-branch-info { display: none; }
+  .repo-file-last-commit .commit-sha, .repo-file-last-commit .commit-info { display: none; }
+  .repo-file-last-commit .commit-summary { font-size: 12px; }
+  .repo-clone-popup { width: min(340px, calc(100vw - 40px)); }
+  .repo-clone-popup .clone-url-row { flex-wrap: wrap; }
+  .repo-clone-popup .clone-url-row input { flex-basis: 100%; }
+  .repo-file-empty { padding: 24px 12px; }
+  #page-code .repo-button-row { flex-wrap: wrap; }
+  #page-code .repo-button-row .repo-button-row-left { flex: 1 1 auto; min-width: 0; max-width: 100%; }
+  #page-code .breadcrumb { flex: 1 1 0; min-width: 0; max-width: 100%; }
+  #page-code .breadcrumb .active.section { min-width: 0; overflow-wrap: anywhere; }
+  .file-header .file-header-left { font-size: 12px; }
+  .file-header .file-header-right { flex-wrap: wrap; max-width: 100%; }
+  .file-header .file-header-right.commit-info { display: none; }
+  .file-header .file-header-right .ui.button { font-size: 10px; padding: 7px 8px; }
+  .file-body.file-code .lines-num { min-width: 40px; width: 40px; padding-right: 10px; }
+  .file-body.file-code .lines-code { font-size: 11px; }
+  .breadcrumb { font-size: 11px; gap: 4px; }
+  .issue-list-toolbar { gap: 9px; margin-bottom: 13px; }
+  .issue-toolbar-actions { width: 100%; justify-content: flex-end; gap: 6px; }
+  .issue-toolbar-actions .ui.button, .issue-filter-select { font-size: 11px; }
+  .issue-row .issue-assignee { display: none; }
+  .preview-pr-title h1 { font-size: 22px; }
+  .pr-subtitle { font-size: 11px; line-height: 1.7; }
+  .pr-tabs { gap: 0; margin: 17px 0 20px; }
+  .pr-tabs button { padding: 10px; font-size: 11px; }
+  .pr-diff-summary { font-size: 10px; }
+  .pr-layout { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .pr-sidebar { display: none; }
+  .pr-comment-header { font-size: 11px; padding: 9px 11px; }
+  .pr-comment-body { padding: 13px; font-size: 14px; }
+  .pr-checks-header, .pr-check-list, .pr-merge-actions { padding: 12px; }
+  .pr-check-row { font-size: 11px; gap: 6px; }
+  .pr-check-row .muted { font-size: 10px; }
+  .dashboard { padding-top: 18px; }
+  .dashboard-grid { grid-template-columns: minmax(0,1fr); gap: 22px; }
+  .dashboard .activity-summary { padding: 16px; }
+  .dashboard .activity-summary h2 { font-size: 18px; }
+  .feeds .news { font-size: 12px; }
+  .user.signin { padding-top: 28px; }
+  .user.signin .ui.attached.segment { padding: 22px; }
+  .user.signin .signin-brand { margin-bottom: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* NEBULA_INNER_PREVIEW_2_1_2: local fictional pages using v28.2.0 template classes. */
+.preview-page-picker { flex-wrap: wrap; }
+.user.settings { padding-top: 24px; }
+.flex-container { display:flex; gap:24px; align-items:flex-start; }
+.flex-container-main { flex:1; min-width:0; }
+.flex-container-nav { flex:0 0 218px; min-width:0; }
+.flex-container-sidebar { flex:0 0 320px; min-width:0; }
+.user.settings .ui.vertical.menu { display:block; width:100%; }
+.user.settings .ui.vertical.menu > .item { display:block; padding:14px 16px; }
+.user.settings .ui.vertical.menu > .header.item { font-weight:600; }
+.user-setting-content > .ui.top.attached.header:not(:first-child) { margin-top:18px; }
+.user-setting-content .ui.form .field:last-child { margin-bottom:0; }
+.user-setting-content .ui.checkbox { display:flex; align-items:center; gap:8px; }
+.user-setting-content .ui.checkbox input { width:15px; height:15px; margin:0; }
+.user-setting-content .ui.form .inline.field { margin-bottom:14px; }
+.preview-setting-help { color:var(--color-text-light); line-height:1.7; }
+.dashboard-repos { padding:0; }
+.dashboard-repos .repos-search .ui.input { margin:0; }
+.dashboard-repos .repo-owner-name-list { padding:0; margin:0; list-style:none; }
+.dashboard-repos .repo-owner-name-list > li { padding:11px 13px; display:flex; gap:8px; align-items:center; border-top:1px solid var(--color-secondary); }
+.dashboard-repos .repo-owner-name-list > li:first-child { border-top:0; }
+.dashboard-repos .repo-list-link { display:flex; align-items:center; gap:9px; min-width:0; overflow-wrap:anywhere; }
+.dashboard-repos .ui.table.segment { padding:0; }
+.dashboard-repos .repos-filter .item { padding:10px 11px; min-height:38px; }
+.dashboard-orgs { margin-top:20px; }
+.dashboard-orgs .ui.attached.segment { display:flex; align-items:center; gap:10px; }
+#activity-feed > .item { display:flex; align-items:flex-start; gap:12px; padding:18px 14px; border-bottom:1px solid var(--color-secondary); }
+#activity-feed > .item:last-child { border-bottom:0; }
+#activity-feed .item-main { flex:1; min-width:0; display:flex; flex-direction:column; gap:9px; line-height:1.7; }
+#activity-feed .item-trailing { color:var(--color-text-light-2); padding-top:2px; }
+#activity-feed .meta { font-size:12px; color:var(--color-text-light-2); }
+#activity-feed .commit-list { display:grid; gap:7px; font-size:12px; }
+#page-files.ui.container { width:calc(100% - 48px); max-width:1850px; }
+.repo-view-file-tree-container .repo-button-row { justify-content:flex-start; gap:8px; }
+#view-file-tree { overflow:auto; height:100%; }
+.view-file-tree-items { display:flex; flex-direction:column; gap:1px; margin-right:.5rem; }
+#view-file-tree .sub-items { display:flex; flex-direction:column; gap:1px; margin-left:14px; border-left:1px solid var(--color-secondary); }
+#view-file-tree .tree-item { display:grid; grid-template-columns:16px 1fr; grid-template-areas:"toggle content"; gap:.25em; padding:6px; font-size:13px; color:var(--color-text); }
+#view-file-tree .tree-item.selected { background:var(--color-active); border-radius:4px; }
+#view-file-tree .tree-item:hover { color:var(--color-text); background:var(--color-hover); border-radius:4px; text-decoration:none; }
+#view-file-tree .item-toggle { grid-area:toggle; display:flex; align-items:center; }
+#view-file-tree .item-content { grid-area:content; display:flex; align-items:center; gap:.5em; text-overflow:ellipsis; min-width:0; }
+#view-file-tree .gt-ellipsis { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+#view-file-tree .type-directory .item-content > .svg { color:var(--color-primary); }
+#view-file-tree .item-toggle .svg { width:14px; height:14px; }
+#view-file-tree .item-content .svg { width:17px; height:17px; }
+.repo-view-content > .repo-button-row { margin-top:0; }
+#repo-file-commit-box { margin-bottom:16px; }
+#repo-file-commit-box .commit-summary { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+#repo-file-commit-box .flex-text-block { min-width:0; }
+.non-diff-file-content > .file-header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; }
+.non-diff-file-content > .file-header .file-actions { display:flex; gap:5px; flex-wrap:wrap; }
+@media(max-width:1100px) { .flex-container-sidebar {flex-basis:275px;} .flex-container-nav {flex-basis:190px;} }
+@media(max-width:767.98px) {
+  .flex-container {flex-direction:column; gap:18px;}
+  .flex-container-main, .flex-container-sidebar, .flex-container-nav {flex:auto; width:100%;}
+  .user.settings .flex-container-nav > .ui.vertical.menu {display:flex; flex-wrap:wrap; margin:0;}
+  .user.settings .ui.vertical.menu > .header.item {width:100%;}
+  .user.settings .ui.vertical.menu > .item {padding:10px 12px; width:auto;}
+  #page-files.ui.container {width:calc(100% - 24px);}
+  #activity-feed .item-trailing {display:none;}
+  #repo-file-commit-box .commit-info {display:none;}
+  #repo-file-commit-box {padding:12px;}
+  .non-diff-file-content > .file-header {padding:10px;}
+  .non-diff-file-content > .file-header .file-actions .ui.button {font-size:11px; padding:7px 8px;}
+  .user-setting-content .ui.selection.dropdown {min-width:0;}
+}
+</style><style id="preview-theme">__LIGHT_CSS__</style></head><body><svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.4l6.1-.9Z"/></symbol>
+  
+  <symbol id="i-repo" viewBox="0 0 24 24"><path d="M5 4h14v17H7a3 3 0 0 1-3-3V5a1 1 0 0 1 1-1Z"/><path d="M4 17h15M9 4v8l2-1.5 2 1.5V4"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></symbol>
+  <symbol id="i-issue" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5M12 16h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8 12 2.5 2.5L16 9"/></symbol>
+  <symbol id="i-branch" viewBox="0 0 24 24"><circle cx="7" cy="5" r="2"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="5" r="2"/><path d="M7 7v10m10-10c0 7-10 3-10 10"/></symbol>
+  <symbol id="i-pull" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M6 7v10m12 0V8c0-2-2-3-4-3h-1m3-3-3 3 3 3"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m10 8 6 4-6 4Z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6C8 3 4 4 3 4v15c2-1 6-1 9 1m0-14c4-3 8-2 9-2v15c-2-1-6-1-9 1V6Z"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 4h9l9 9-8 8-10-10Z"/><circle cx="8" cy="8" r="1"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 3-1 3-3 1 1 3-2 2 2 2-1 3 3 1 1 3h6l1-3 3-1-1-3 2-2-2-2 1-3-3-1-1-3Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v10H3Z"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5Zm9 0v5h5"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24"><path d="M4 7a9 9 0 1 1-1 8M3 3v5h5m4-2v6l4 2"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0v5l2 3H4l2-3Zm4 11h4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M4 4h16v13H9l-5 4Z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></symbol>
+
+  <symbol id="i-hexagon" viewBox="0 0 24 24"><path d="m12 2 8.5 5v10L12 22l-8.5-5V7Z"/><path d="m12 7 4.3 2.5v5L12 17l-4.3-2.5v-5Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.2A8.7 8.7 0 0 1 9.8 3.8 8.8 8.8 0 1 0 20.2 14.2Z"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol>
+  
+  <symbol id="i-comment" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4Z"/></symbol>
+  <symbol id="i-git-commit" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M2 12h6m8 0h6"/></symbol>
+</svg>
+<aside class="preview-toolbar" aria-label="离线主题预览控制栏">
+  <div class="preview-toolbar-title"><span class="preview-dot"></span><strong>NEBULA 2</strong><span class="preview-subtitle">示例预览 · 离线</span></div>
+  <nav class="preview-page-picker" aria-label="选择示例页面">
+    <button type="button" data-page="repo" aria-current="page">仓库首页</button><button type="button" data-page="tree">目录</button><button type="button" data-page="doc">文档</button><button type="button" data-page="code">代码</button><button type="button" data-page="issues">工单</button><button type="button" data-page="pr">合并请求</button><button type="button" data-page="dash">仪表板</button><button type="button" data-page="settings">设置</button><button type="button" data-page="login">登录</button>
+  </nav>
+  <div class="preview-options"><div class="preview-mode-picker" aria-label="选择主题"><button type="button" data-theme="light" aria-pressed="true"><svg class="svg"><use href="#i-sun"/></svg>日间</button><button type="button" data-theme="dark" aria-pressed="false"><svg class="svg"><use href="#i-moon"/></svg>夜间</button><button type="button" data-theme="auto" aria-pressed="false"><svg class="svg"><use href="#i-monitor"/></svg>自动</button></div><button type="button" id="motion-toggle" class="preview-motion-toggle" aria-pressed="true">动效开</button></div>
+</aside>
+<nav id="navbar" aria-label="Gitea 导航">
+  <div class="navbar-left"><a id="navbar-logo" class="item preview-navbar-brand" href="#repo" data-page="repo"><span class="preview-brand-mark"><svg class="svg"><use href="#i-hexagon"/></svg></span>Gitea</a><a class="item" href="#dash" data-page="dash">仪表板</a><a class="item" href="#issues" data-page="issues">工单</a><a class="item" href="#pr" data-page="pr">合并请求</a><a class="item" href="#milestones" data-dialog-title="里程碑" data-dialog-text="示例里程碑 v2.4，展示主题中的弹层与文字层级。">里程碑</a><a class="item" href="#explore" data-dialog-title="探索仓库" data-dialog-text="这是 Nebula 主题的离线示例。可从顶部预览栏切换九个页面。">探索</a></div>
+  <div class="navbar-right"><button type="button" class="preview-icon-button" aria-label="查看示例通知" data-dialog-title="通知" data-dialog-text="没有新的示例通知。"><svg class="svg"><use href="#i-bell"/></svg></button><details class="preview-dropdown"><summary class="preview-icon-button" aria-label="新建菜单"><svg class="svg"><use href="#i-plus"/></svg><svg class="svg"><use href="#i-chevron"/></svg></summary><div class="preview-popup right"><button type="button" class="menu-row" data-dialog-title="创建仓库" data-dialog-text="仅展示菜单状态，未创建任何线上仓库。">新建仓库</button><button type="button" class="menu-row" data-dialog-title="迁移仓库" data-dialog-text="仅展示菜单状态，未发起迁移。">迁移仓库</button></div></details><a class="item" href="#login" data-page="login" aria-label="查看登录页"><span class="avatar preview-user-avatar">L</span><svg class="svg"><use href="#i-chevron"/></svg></a></div>
+  <div class="navbar-mobile-right"><a class="preview-icon-button" href="#login" data-page="login" aria-label="登录"><span class="avatar">L</span></a><details class="preview-dropdown"><summary class="preview-menu-toggle" aria-label="展开主导航"><svg class="svg"><use href="#i-menu"/></svg></summary><div class="preview-popup right"><button class="menu-row" type="button" data-page="dash">仪表板</button><button class="menu-row" type="button" data-page="issues">工单</button><button class="menu-row" type="button" data-page="pr">合并请求</button><button class="menu-row" type="button" data-page="login">登录</button></div></details></div>
+</nav>
+
+<main id="repo-app" class="page-content repository file list" aria-label="示例仓库 nebula-lab / quantum-core">
+ <div class="secondary-nav">
+  <div class="ui container"><div class="repo-header flex-left-right">
+   <div class="flex-text-block"><svg class="svg repo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-repo"/></svg><div class="flex-text-block tw-flex-wrap tw-text-18"><a class="muted tw-font-normal" href="#repo" data-page="repo">nebula-lab</a> / <a class="muted" href="#repo" data-page="repo">quantum-core</a></div><span class="ui basic label repo-visibility">公开</span></div>
+   <details class="repo-action-details" open><summary class="ui compact basic button">操作<svg class="svg"><use href="#i-chevron"/></svg></summary><div class="flex-text-block tw-flex-wrap repo-actions"><button type="button" class="ui compact basic button" data-local-toggle="关注" aria-pressed="false"><svg class="svg"><use href="#i-eye"/></svg><span>关注</span><span class="action-count">24</span></button><button type="button" class="ui compact basic button" data-local-toggle="点赞" aria-pressed="true"><svg class="svg"><use href="#i-star"/></svg><span>已点赞</span><span class="action-count">1.2k</span></button><button type="button" class="ui compact basic button" data-dialog-title="派生仓库" data-dialog-text="当前为主题示例，点击不会创建派生。"><svg class="svg"><use href="#i-branch"/></svg>派生<span class="action-count">86</span></button></div></details>
+  </div></div>
+  <div class="ui container"><overflow-menu class="ui secondary pointing menu preview-standalone-menu" data-ready="true" aria-label="仓库导航"><div class="overflow-menu-items">
+   <a class="active item" href="#repo" data-page="repo" data-repo-tab="repo tree doc code">代码</a><a class="item" href="#issues" data-page="issues" data-repo-tab="issues">工单<span class="ui small label">12</span></a><a class="item" href="#pr" data-page="pr" data-repo-tab="pr">合并请求<span class="ui small label">3</span></a><a class="item" href="#actions" data-dialog-title="Actions" data-dialog-text="此示例包含 PR 检查结果的静态展示，不会运行工作流。">Actions</a><a class="item" href="#packages" data-dialog-title="软件包" data-dialog-text="软件包页面未包含在本次九页面离线预览中。">软件包</a><a class="item" href="#projects" data-dialog-title="项目" data-dialog-text="项目页面未包含在本次九页面离线预览中。">项目</a><a class="item" href="#releases" data-dialog-title="版本发布" data-dialog-text="v2.3.1 · 原 Nebula 演示项目中的示例版本，并非实际发布状态。">版本发布<span class="ui small label">4</span></a><a class="item" href="#readme" data-readme>百科</a><a class="item" href="#dash" data-page="dash">动态</a><a class="item" href="#settings" data-dialog-title="主题设置" data-dialog-text="使用最顶部的日间、夜间、自动按钮切换外观。此处不会修改你的 Gitea 账户。">设置</a>
+  </div></overflow-menu></div><div class="ui tabs divider"></div>
+ </div>
+ <section id="page-repo" class="ui container" data-repo-page="repo" aria-label="仓库首页">
+  <details class="repo-overview-details" open><summary>仓库简介与语言<svg class="svg"><use href="#i-chevron"/></svg></summary><div class="repo-overview-content"><p class="repo-description">高性能分布式任务调度引擎，毫秒级调度，支持弹性伸缩。</p><div class="repo-topic-list"><span class="ui label">scheduler</span><span class="ui label">distributed-systems</span><span class="ui label">golang</span><span class="ui label">timing-wheel</span></div><div class="repo-language-summary"><div class="language-stats" aria-label="示例语言占比"><span class="language-go" style="width:68.2%"></span><span class="language-ts" style="width:21.4%"></span><span class="language-rust" style="width:6.9%"></span><span class="language-other" style="width:3.5%"></span></div><div class="language-stats-details"><span><i class="language-dot language-go"></i><strong>Go</strong> 68.2%</span><span><i class="language-dot language-ts"></i><strong>TypeScript</strong> 21.4%</span><span><i class="language-dot language-rust"></i><strong>Rust</strong> 6.9%</span><span><i class="language-dot language-other"></i>其他 3.5%</span></div></div></div></details>
+  <div class="repo-grid-filelist-only"><div class="repo-home-filelist">
+   <div class="repo-button-row"><div class="repo-button-row-left"><details class="preview-dropdown"><summary class="ui compact basic button"><svg class="svg"><use href="#i-branch"/></svg><span id="branch-name">main</span><svg class="svg"><use href="#i-chevron"/></svg></summary><div class="preview-popup"><p>选择示例分支</p><button class="menu-row" type="button" data-branch="main">main<span>默认</span></button><button class="menu-row" type="button" data-branch="feat/hierarchical-wheel">feat/hierarchical-wheel</button></div></details><span class="repo-branch-info"><strong>286</strong> 次提交 · <strong>7</strong> 个分支 · <strong>14</strong> 个标签 · 4.8 MiB</span></div><div class="repo-button-row-right"><div class="repo-file-search-container"><div class="ui small input global-shortcut-wrapper"><input id="file-search" type="search" placeholder="查找文件" aria-label="查找示例文件"><kbd>T</kbd></div></div><button type="button" class="ui compact basic button repo-add-file" data-dialog-title="添加文件" data-dialog-text="仅展示按钮及弹层样式。此预览不会上传或修改文件。">添加文件<svg class="svg"><use href="#i-chevron"/></svg></button><details id="clone-details" class="preview-dropdown"><summary class="ui compact primary button"><svg class="svg"><use href="#i-code"/></svg>克隆<svg class="svg"><use href="#i-chevron"/></svg></summary><div class="preview-popup right repo-clone-popup"><div class="clone-protocols"><button type="button" data-clone-protocol="https" aria-pressed="true">HTTPS</button><button type="button" data-clone-protocol="ssh" aria-pressed="false">SSH</button></div><div class="clone-url-row"><input id="clone-url" readonly aria-label="示例克隆地址" value="https://example.com/nebula-lab/quantum-core.git"><button type="button" class="ui compact basic button" id="copy-clone"><svg class="svg"><use href="#i-copy"/></svg>复制</button></div><p>示例地址，仅用于预览复制交互。</p></div></details></div></div>
+   <div id="repo-files-table" data-preview-file-table="repo" aria-label="示例仓库文件列表"><div class="repo-file-line repo-file-last-commit"><span class="avatar">L</span><div class="commit-summary"><span class="author">lin.zhao</span><span class="commit-sha">a3f9c21</span> <span class="muted">feat(scheduler): 引入分层时间轮以降低调度延迟</span></div><span class="commit-info">3 小时前</span></div>
+<div class="repo-file-item" data-file-name=".gitea/workflows"><div class="repo-file-cell name directory"><svg class="svg" aria-hidden="true"><use href="#i-folder"/></svg><a class="entry-name" href="#code" data-file=".gitea/workflows">.gitea/workflows</a></div><div class="repo-file-cell message">ci: 增加 ARM64 构建矩阵</div><div class="repo-file-cell age">2 天前</div></div>
+<div class="repo-file-item" data-file-name="cmd"><div class="repo-file-cell name directory"><svg class="svg" aria-hidden="true"><use href="#i-folder"/></svg><a class="entry-name" href="#code" data-file="cmd">cmd</a></div><div class="repo-file-cell message">feat(cli): 新增 qc bench 子命令</div><div class="repo-file-cell age">5 天前</div></div>
+<div class="repo-file-item" data-file-name="internal"><div class="repo-file-cell name directory"><svg class="svg" aria-hidden="true"><use href="#i-folder"/></svg><a class="entry-name" href="#code" data-file="internal">internal</a></div><div class="repo-file-cell message">feat(scheduler): 引入分层时间轮以降低调度延迟</div><div class="repo-file-cell age">3 小时前</div></div>
+<div class="repo-file-item" data-file-name="pkg"><div class="repo-file-cell name directory"><svg class="svg" aria-hidden="true"><use href="#i-folder"/></svg><a class="entry-name" href="#code" data-file="pkg">pkg</a></div><div class="repo-file-cell message">refactor(queue): 拆分无锁队列实现</div><div class="repo-file-cell age">1 周前</div></div>
+<div class="repo-file-item" data-file-name="web"><div class="repo-file-cell name directory"><svg class="svg" aria-hidden="true"><use href="#i-folder"/></svg><a class="entry-name" href="#code" data-file="web">web</a></div><div class="repo-file-cell message">feat(web): 调度看板支持实时刷新</div><div class="repo-file-cell age">4 天前</div></div>
+<div class="repo-file-item" data-file-name="docs"><div class="repo-file-cell name directory"><svg class="svg" aria-hidden="true"><use href="#i-folder"/></svg><a class="entry-name" href="#code" data-file="docs">docs</a></div><div class="repo-file-cell message">docs: 补充集群部署指南</div><div class="repo-file-cell age">2 周前</div></div>
+<div class="repo-file-item" data-file-name=".gitignore"><div class="repo-file-cell name "><svg class="svg" aria-hidden="true"><use href="#i-file"/></svg><a class="entry-name" href="#code" data-file=".gitignore">.gitignore</a></div><div class="repo-file-cell message">chore: 忽略本地压测数据</div><div class="repo-file-cell age">1 个月前</div></div>
+<div class="repo-file-item" data-file-name="go.mod"><div class="repo-file-cell name "><svg class="svg" aria-hidden="true"><use href="#i-file"/></svg><a class="entry-name" href="#code" data-file="go.mod">go.mod</a></div><div class="repo-file-cell message">build: 升级到 Go 1.23</div><div class="repo-file-cell age">3 周前</div></div>
+<div class="repo-file-item" data-file-name="LICENSE"><div class="repo-file-cell name "><svg class="svg" aria-hidden="true"><use href="#i-file"/></svg><a class="entry-name" href="#code" data-file="LICENSE">LICENSE</a></div><div class="repo-file-cell message">初始化仓库</div><div class="repo-file-cell age">1 年前</div></div>
+<div class="repo-file-item" data-file-name="Makefile"><div class="repo-file-cell name "><svg class="svg" aria-hidden="true"><use href="#i-file"/></svg><a class="entry-name" href="#code" data-file="Makefile">Makefile</a></div><div class="repo-file-cell message">build: 增加 make bench 目标</div><div class="repo-file-cell age">5 天前</div></div>
+<div class="repo-file-item" data-file-name="README.md"><div class="repo-file-cell name "><svg class="svg" aria-hidden="true"><use href="#i-file"/></svg><a class="entry-name" href="#code" data-file="README.md">README.md</a></div><div class="repo-file-cell message">docs: 更新基准测试数据</div><div class="repo-file-cell age">2 天前</div></div>
+   </div><p id="file-empty" class="repo-file-empty" hidden>没有匹配的示例文件，试试搜索 internal 或 README。</p>
+   <section id="readme" class="readme-section non-diff-file-content"><h4 class="file-header ui top attached header"><svg class="svg"><use href="#i-book"/></svg>README.md</h4><div class="ui bottom attached segment file-view-container"><article class="file-view markup markdown"><h1>Quantum Core</h1><p class="readme-intro">基于分层时间轮的分布式任务调度引擎。为高并发、低延迟的任务编排提供简洁可靠的基础。</p><h2>快速开始</h2><pre><code><span class="comment"># 安装示例 CLI</span>
+go install example.com/nebula-lab/quantum-core/cmd/qc@latest
+
+<span class="comment"># 启动单节点服务</span>
+qc serve --config ./config.yaml</code></pre><h2>特性</h2><ul><li>四级分层时间轮，从毫秒任务到长期调度。</li><li>工作池与队列分离，按负载调整并发。</li><li>集群协调与故障恢复，支持任务状态追踪。</li><li>Web 看板与 Prometheus 指标，便于观察调度行为。</li></ul><p class="sample-caption">以上为原 Nebula 示例项目的展示内容，未连接真实仓库。</p></article></div></section>
+  </div></div>
+ </section>
+ 
+<section id="page-files" class="ui container fluid padded" data-repo-page="tree doc" aria-label="目录与文档阅读示例" hidden><div class="repo-grid-filelist-only"><div class="repo-home-filelist"><div class="repo-view-container">
+<aside class="repo-view-file-tree-container"><div class="flex-text-block repo-button-row"><button class="repo-view-file-tree-toggle ui button" type="button" aria-label="文件树示例" data-dialog-title="文件树" data-dialog-text="本地示例保留文件树；手机按 Gitea 原有规则隐藏。"><svg class="svg"><use href="#i-repo"/></svg></button><b>文件</b></div><div id="view-file-tree" class="tw-overflow-auto tw-h-full"><div class="view-file-tree-items"><a class="tree-item silenced type-directory" href="#tree" data-page="tree" data-tree-key="cmd"><div class="item-toggle"><svg class="svg"><use href="#i-chevron"/></svg></div><div class="item-content"><svg class="svg"><use href="#i-folder"/></svg><span class="gt-ellipsis">cmd</span></div></a><a class="tree-item silenced type-directory" href="#tree" data-page="tree" data-tree-key="internal"><div class="item-toggle"><svg class="svg"><use href="#i-chevron"/></svg></div><div class="item-content"><svg class="svg"><use href="#i-folder"/></svg><span class="gt-ellipsis">internal</span></div></a><a class="tree-item silenced type-directory selected" href="#tree" data-page="tree" data-tree-key="docs"><div class="item-toggle"><svg class="svg"><use href="#i-chevron"/></svg></div><div class="item-content"><svg class="svg"><use href="#i-folder"/></svg><span class="gt-ellipsis">docs</span></div></a><div class="sub-items"><a class="tree-item silenced type-directory" href="#tree" data-page="tree" data-tree-key="guides"><div class="item-toggle"><svg class="svg"><use href="#i-chevron"/></svg></div><div class="item-content"><svg class="svg"><use href="#i-folder"/></svg><span class="gt-ellipsis">guides</span></div></a><a class="tree-item silenced type-directory" href="#tree" data-page="tree" data-tree-key="architecture"><div class="item-toggle"><svg class="svg"><use href="#i-chevron"/></svg></div><div class="item-content"><svg class="svg"><use href="#i-folder"/></svg><span class="gt-ellipsis">architecture</span></div></a><a class="tree-item silenced type-file" href="#doc" data-page="doc" data-tree-key="deployment.md"><div class="item-content"><svg class="svg"><use href="#i-file"/></svg><span class="gt-ellipsis">deployment.md</span></div></a><a class="tree-item silenced type-file" href="#doc" data-page="doc" data-tree-key="getting-started.md"><div class="item-content"><svg class="svg"><use href="#i-file"/></svg><span class="gt-ellipsis">getting-started.md</span></div></a></div><a class="tree-item silenced type-directory" href="#tree" data-page="tree" data-tree-key="web"><div class="item-toggle"><svg class="svg"><use href="#i-chevron"/></svg></div><div class="item-content"><svg class="svg"><use href="#i-folder"/></svg><span class="gt-ellipsis">web</span></div></a><a class="tree-item silenced type-file" href="#doc" data-page="doc" data-tree-key="README.md"><div class="item-content"><svg class="svg"><use href="#i-file"/></svg><span class="gt-ellipsis">README.md</span></div></a><a class="tree-item silenced type-file" href="#code" data-page="code" data-tree-key="go.mod"><div class="item-content"><svg class="svg"><use href="#i-file"/></svg><span class="gt-ellipsis">go.mod</span></div></a></div></div></aside>
+<div class="repo-view-content"><div class="repo-button-row"><div class="repo-button-row-left"><button class="ui compact basic button" type="button" data-page="tree"><svg class="svg"><use href="#i-branch"/></svg>main</button><nav class="breadcrumb" aria-label="目录路径"><a href="#repo" data-page="repo">quantum-core</a><span>/</span><a href="#tree" data-page="tree">docs</a><span id="inner-file-path" hidden>/ deployment.md</span></nav></div><div class="repo-button-row-right"><button type="button" class="ui compact basic button" data-page="doc">查看部署文档</button></div></div>
+<div data-browser-view="tree"><div data-preview-file-table="tree"><div class="repo-file-last-commit"><span class="avatar">L</span><div class="commit-summary"><strong class="author">lin.zhao</strong><code>a3f9c21</code> docs: 更新集群部署指南</div><span class="commit-info">3 小时前</span></div><div class="repo-file-item"><div class="repo-file-cell name directory"><svg class="svg"><use href="#i-folder"/></svg><a class="entry-name" href="#doc" data-page="doc">guides</a></div><div class="repo-file-cell message">docs: 补充首次部署说明</div><div class="repo-file-cell age">2 天前</div></div><div class="repo-file-item"><div class="repo-file-cell name directory"><svg class="svg"><use href="#i-folder"/></svg><a class="entry-name" href="#doc" data-page="doc">architecture</a></div><div class="repo-file-cell message">docs: 说明任务调度与故障恢复</div><div class="repo-file-cell age">1 周前</div></div><div class="repo-file-item"><div class="repo-file-cell name "><svg class="svg"><use href="#i-file"/></svg><a class="entry-name" href="#doc" data-page="doc">deployment.md</a></div><div class="repo-file-cell message">docs: 更新集群部署指南</div><div class="repo-file-cell age">3 小时前</div></div><div class="repo-file-item"><div class="repo-file-cell name "><svg class="svg"><use href="#i-file"/></svg><a class="entry-name" href="#doc" data-page="doc">getting-started.md</a></div><div class="repo-file-cell message">docs: 简化启动和验证步骤</div><div class="repo-file-cell age">2 天前</div></div><div class="repo-file-item"><div class="repo-file-cell name "><svg class="svg"><use href="#i-file"/></svg><a class="entry-name" href="#doc" data-page="doc">configuration.md</a></div><div class="repo-file-cell message">docs: 增加配置项说明</div><div class="repo-file-cell age">4 天前</div></div><div class="repo-file-item"><div class="repo-file-cell name "><svg class="svg"><use href="#i-file"/></svg><a class="entry-name" href="#doc" data-page="doc">README.md</a></div><div class="repo-file-cell message">docs: 整理文档目录</div><div class="repo-file-cell age">1 周前</div></div></div></div><div class="non-diff-file-content" data-browser-view="doc" hidden>
+<div id="repo-file-commit-box" class="ui segment list-header tw-mb-4 flex-left-right"><div class="flex-text-block"><span class="avatar">L</span><strong>lin.zhao</strong><code>a3f9c21</code><span class="commit-summary">docs: 更新集群部署指南</span></div><span class="commit-info">3 小时前</span></div>
+<h4 class="file-header ui top attached header flex-left-right"><div class="file-header-left file-info">3.8 KiB · Markdown</div><div class="file-header-right file-actions flex-text-block tw-flex-wrap"><button type="button" class="ui compact basic button" data-dialog-title="原始文件" data-dialog-text="这里展示 Markdown 阅读布局，所有内容是虚构示例。">原始文件</button><button type="button" class="ui compact basic button" data-dialog-title="文件历史" data-dialog-text="这是离线文件历史按钮示例。">文件历史</button></div></h4>
+<div class="ui bottom attached segment file-view-container"><article class="file-view markup markdown"><h1>Quantum Core 集群部署指南</h1><p>本指南说明如何启动一个小型调度集群，并检查任务分配、运行状态和失败重试。首次部署可以先使用两个工作节点，确认每一步正常后再增加节点。</p><h2>一、准备运行环境</h2><p>开始前，请准备配置文件、日志目录和节点名称。每个节点使用独立名称，便于从日志中区分任务由哪一台机器处理。服务启动后先检查健康状态，再提交少量示例任务。</p><table><thead><tr><th>项目</th><th>建议配置</th><th>用途</th></tr></thead><tbody><tr><td>调度节点</td><td>scheduler-01</td><td>维护任务时间与分配信息</td></tr><tr><td>工作节点</td><td>worker-01、worker-02</td><td>并行执行已分配任务</td></tr><tr><td>日志目录</td><td><code>./logs</code></td><td>保存运行和重试记录</td></tr></tbody></table><h2>二、启动与检查</h2><pre><code># 本地虚构示例命令
+qc serve --config ./config.yaml
+qc status --endpoint http://127.0.0.1:8080</code></pre><p>看到节点状态为 ready 后，可以提交一批简单任务进行验证。检查任务是否按时触发、失败后是否重试，以及重启一个工作节点时其他节点能否继续处理任务。</p><blockquote><p>先确认基本流程，再逐步提高任务数量。每次调整都记录配置和观察结果，便于比较。</p></blockquote><h2>三、上线前确认</h2><ul><li>每个节点都有独立名称，且时间同步正常。</li><li>运行日志能够区分成功、重试和最终失败。</li><li>停止一个工作节点后，任务能够重新分配。</li></ul><p class="sample-caption">以上内容用于展示长文、表格和代码块的主题外观，均为离线虚构示例。</p></article></div></div>
+</div></div></div></div></section>
+
+ <section id="page-code" class="ui container" data-repo-page="code" aria-label="代码文件" hidden>
+  <div class="repo-button-row"><div class="repo-button-row-left"><button class="ui compact basic button" type="button" data-page="repo"><svg class="svg"><use href="#i-branch"/></svg>main</button><nav class="breadcrumb" aria-label="文件路径"><a class="section" href="#repo" data-page="repo">quantum-core</a><span class="breadcrumb-divider">/</span><span id="code-path" class="active section">internal / scheduler / scheduler.go</span></nav></div></div>
+  <div class="file-content"><div class="file-header"><div class="file-header-left"><span class="avatar">L</span><strong>lin.zhao</strong><span class="commit-summary muted">feat(scheduler): 引入分层时间轮以降低调度延迟</span></div><div class="file-header-right commit-info"><span class="commit-hash">a3f9c21</span>3 小时前</div></div><div class="file-header"><div class="file-info"><span id="code-line-count">36</span> 行 · <span id="code-byte-count">742</span> B · <span id="code-language">Go</span></div><div class="file-header-right"><button type="button" class="ui compact basic button" id="copy-code">复制代码</button><button type="button" class="ui compact basic button" data-dialog-title="文件历史" data-dialog-text="当前代码是离线主题示例，不查询真实提交历史。">历史</button><button type="button" class="ui compact basic button" disabled>编辑</button></div></div><div class="file-body file-code code-view"><table class="chroma" aria-label="示例源代码"><tbody id="code-lines"></tbody></table></div></div>
+ </section>
+ <section id="page-issues" class="ui container" data-repo-page="issues" aria-label="工单" hidden>
+  <div class="issue-list-toolbar"><div class="ui icon input"><svg class="svg"><use href="#i-search"/></svg><input id="issue-search" type="search" placeholder="搜索工单标题、编号或标签…" aria-label="搜索示例工单"></div><div class="issue-toolbar-actions"><label class="sr-only" for="issue-label-filter">按标签过滤</label><select id="issue-label-filter" class="issue-filter-select"><option value="all">所有标签</option><option value="bug">缺陷</option><option value="feat">功能</option><option value="perf">性能</option><option value="docs">文档</option></select><button type="button" class="ui compact basic button" data-dialog-title="里程碑" data-dialog-text="示例里程碑：v2.3.2、v2.4 和 v3.0。">里程碑</button><button type="button" class="ui primary button" data-dialog-title="创建工单" data-dialog-text="当前为离线预览，不会创建线上工单。可以使用搜索、标签和开启/关闭筛选检验列表状态。">创建工单</button></div></div>
+  <div class="issue-list-container"><div class="list-header"><div class="state-filters"><button type="button" class="state-filter" data-issue-state="open" aria-pressed="true"><svg class="svg"><use href="#i-issue"/></svg>12 个开启中</button><button type="button" class="state-filter" data-issue-state="closed" aria-pressed="false"><svg class="svg"><use href="#i-check-circle"/></svg>48 个已关闭</button></div><span id="issue-result-count" class="repo-meta-count">显示 6 条示例</span></div>
+<article class="issue-row " data-state="open" data-labels="bug perf" data-search="142 调度器在 tick 小于 1ms 时 CPU 占用异常升高 缺陷 性能 wu.min" >
+ <span class="issue-icon"><svg class="svg" aria-hidden="true"><use href="#i-issue"/></svg></span><div class="issue-main"><div class="issue-title-row"><a class="issue-title" href="#issue-142" data-dialog-title="调度器在 tick 小于 1ms 时 CPU 占用异常升高" data-dialog-text="#142 · 示例工单。此离线预览可检验搜索、状态过滤、标签、弹层和主题配色，不连接线上仓库。">调度器在 tick 小于 1ms 时 CPU 占用异常升高</a><span class="ui label label-bug">缺陷</span><span class="ui label label-performance">性能</span></div><div class="issue-meta">#142 由 wu.min 于 2 小时前创建 · 里程碑 v2.4</div></div><span class="avatar issue-assignee avatar-l" aria-label="示例指派人">L</span><span class="comment-count"><svg class="svg" aria-hidden="true"><use href="#i-comment"/></svg>6</span></article>
+<article class="issue-row " data-state="open" data-labels="feat" data-search="139 支持基于 Cron 表达式定义任务 功能 zhou.qi" >
+ <span class="issue-icon"><svg class="svg" aria-hidden="true"><use href="#i-issue"/></svg></span><div class="issue-main"><div class="issue-title-row"><a class="issue-title" href="#issue-139" data-dialog-title="支持基于 Cron 表达式定义任务" data-dialog-text="#139 · 示例工单。此离线预览可检验搜索、状态过滤、标签、弹层和主题配色，不连接线上仓库。">支持基于 Cron 表达式定义任务</a><span class="ui label label-feature">功能</span></div><div class="issue-meta">#139 由 zhou.qi 于 1 天前创建 · 里程碑 v2.4</div></div><span class="avatar issue-assignee avatar-z" aria-label="示例指派人">Z</span><span class="comment-count"><svg class="svg" aria-hidden="true"><use href="#i-comment"/></svg>12</span></article>
+<article class="issue-row " data-state="open" data-labels="bug" data-search="137 集群模式下 leader 切换导致任务重复执行 缺陷 chen.yu" >
+ <span class="issue-icon"><svg class="svg" aria-hidden="true"><use href="#i-issue"/></svg></span><div class="issue-main"><div class="issue-title-row"><a class="issue-title" href="#issue-137" data-dialog-title="集群模式下 leader 切换导致任务重复执行" data-dialog-text="#137 · 示例工单。此离线预览可检验搜索、状态过滤、标签、弹层和主题配色，不连接线上仓库。">集群模式下 leader 切换导致任务重复执行</a><span class="ui label label-bug">缺陷</span></div><div class="issue-meta">#137 由 chen.yu 于 2 天前创建 · 里程碑 v2.3.2</div></div><span class="avatar issue-assignee avatar-c" aria-label="示例指派人">C</span><span class="comment-count"><svg class="svg" aria-hidden="true"><use href="#i-comment"/></svg>9</span></article>
+<article class="issue-row " data-state="open" data-labels="docs help" data-search="133 补充 Kubernetes Operator 部署文档 文档 需要帮助 lin.zhao" >
+ <span class="issue-icon"><svg class="svg" aria-hidden="true"><use href="#i-issue"/></svg></span><div class="issue-main"><div class="issue-title-row"><a class="issue-title" href="#issue-133" data-dialog-title="补充 Kubernetes Operator 部署文档" data-dialog-text="#133 · 示例工单。此离线预览可检验搜索、状态过滤、标签、弹层和主题配色，不连接线上仓库。">补充 Kubernetes Operator 部署文档</a><span class="ui label label-docs">文档</span><span class="ui label label-help">需要帮助</span></div><div class="issue-meta">#133 由 lin.zhao 于 4 天前创建</div></div><span class="avatar issue-assignee avatar-h" aria-label="示例指派人">H</span><span class="comment-count"><svg class="svg" aria-hidden="true"><use href="#i-comment"/></svg>3</span></article>
+<article class="issue-row " data-state="open" data-labels="feat" data-search="131 Web 看板增加任务依赖拓扑图 功能 he.jun" >
+ <span class="issue-icon"><svg class="svg" aria-hidden="true"><use href="#i-issue"/></svg></span><div class="issue-main"><div class="issue-title-row"><a class="issue-title" href="#issue-131" data-dialog-title="Web 看板增加任务依赖拓扑图" data-dialog-text="#131 · 示例工单。此离线预览可检验搜索、状态过滤、标签、弹层和主题配色，不连接线上仓库。">Web 看板增加任务依赖拓扑图</a><span class="ui label label-feature">功能</span></div><div class="issue-meta">#131 由 he.jun 于 1 周前创建</div></div><span class="avatar issue-assignee avatar-h" aria-label="示例指派人">H</span><span class="comment-count"><svg class="svg" aria-hidden="true"><use href="#i-comment"/></svg>5</span></article>
+<article class="issue-row " data-state="open" data-labels="perf" data-search="126 评估使用 io_uring 优化网络 IO 性能 chen.yu" >
+ <span class="issue-icon"><svg class="svg" aria-hidden="true"><use href="#i-issue"/></svg></span><div class="issue-main"><div class="issue-title-row"><a class="issue-title" href="#issue-126" data-dialog-title="评估使用 io_uring 优化网络 IO" data-dialog-text="#126 · 示例工单。此离线预览可检验搜索、状态过滤、标签、弹层和主题配色，不连接线上仓库。">评估使用 io_uring 优化网络 IO</a><span class="ui label label-performance">性能</span></div><div class="issue-meta">#126 由 chen.yu 于 2 周前创建 · 里程碑 v3.0</div></div><span class="avatar issue-assignee avatar-w" aria-label="示例指派人">W</span><span class="comment-count"><svg class="svg" aria-hidden="true"><use href="#i-comment"/></svg>14</span></article>
+<article class="issue-row is-closed" data-state="closed" data-labels="bug" data-search="124 修复重试任务取消后的内存释放 缺陷 wu.min" hidden>
+ <span class="issue-icon"><svg class="svg" aria-hidden="true"><use href="#i-check-circle"/></svg></span><div class="issue-main"><div class="issue-title-row"><a class="issue-title" href="#issue-124" data-dialog-title="修复重试任务取消后的内存释放" data-dialog-text="#124 · 示例工单。此离线预览可检验搜索、状态过滤、标签、弹层和主题配色，不连接线上仓库。">修复重试任务取消后的内存释放</a><span class="ui label label-bug">缺陷</span></div><div class="issue-meta">#124 由 wu.min 于 2 周前创建 · 里程碑 v2.3.1</div></div><span class="avatar issue-assignee avatar-l" aria-label="示例指派人">L</span><span class="comment-count"><svg class="svg" aria-hidden="true"><use href="#i-comment"/></svg>4</span></article>
+<article class="issue-row is-closed" data-state="closed" data-labels="feat" data-search="118 增加调度器健康检查接口 功能 lin.zhao" hidden>
+ <span class="issue-icon"><svg class="svg" aria-hidden="true"><use href="#i-check-circle"/></svg></span><div class="issue-main"><div class="issue-title-row"><a class="issue-title" href="#issue-118" data-dialog-title="增加调度器健康检查接口" data-dialog-text="#118 · 示例工单。此离线预览可检验搜索、状态过滤、标签、弹层和主题配色，不连接线上仓库。">增加调度器健康检查接口</a><span class="ui label label-feature">功能</span></div><div class="issue-meta">#118 由 lin.zhao 于 3 周前创建 · 里程碑 v2.3.1</div></div><span class="avatar issue-assignee avatar-z" aria-label="示例指派人">Z</span><span class="comment-count"><svg class="svg" aria-hidden="true"><use href="#i-comment"/></svg>2</span></article>
+   <div id="issue-empty" class="issue-empty" hidden>没有匹配的工单。清空搜索或切换标签试试。</div>
+  </div><p class="issue-footer-note">仓库计数沿用原演示；列表提供 6 条开启、2 条关闭的本地示例。</p>
+ </section>
+ <section id="page-pr" class="ui container" data-repo-page="pr" aria-label="合并请求" hidden>
+  <header class="preview-pr-title issue-title-header"><h1>feat(scheduler): 引入分层时间轮以降低调度延迟 <span class="index">#128</span></h1><div class="pr-subtitle"><span class="pr-status"><svg class="svg"><use href="#i-pull"/></svg>开启中</span><strong>lin.zhao</strong><span>希望将 3 次提交从</span><code>feat/hierarchical-wheel</code><span>合并至</span><code>main</code></div></header>
+  <div class="pr-tabs" role="tablist" aria-label="合并请求内容"><button type="button" role="tab" data-pr-tab="conversation" aria-selected="true">对话<span class="ui small label">5</span></button><button type="button" role="tab" data-pr-tab="commits" aria-selected="false">代码提交<span class="ui small label">3</span></button><button type="button" role="tab" data-pr-tab="files" aria-selected="false">文件变动<span class="ui small label">6</span></button><span class="pr-diff-summary"><span class="added">+128</span> <span class="removed">−41</span></span></div>
+  <div id="pr-conversation" class="pr-layout" role="tabpanel"><div class="comment-list">
+   <article class="timeline-item comment"><span class="timeline-avatar avatar">L</span><div class="content"><div class="pr-comment-header"><strong>lin.zhao</strong><span>评论于 3 小时前</span><span class="ui basic label">作者</span></div><div class="pr-comment-body markup"><p>把单层时间轮改为 4 层分层结构，到期任务在推进时批量派发，避免每个 tick 遍历全部槽位。</p><p>本地基准（100 万定时任务，16 worker）：P99 调度延迟 <strong>6.4ms → 1.7ms</strong>，CPU 占用下降约 38%。</p><p>关闭 <a href="#issues" data-page="issues">#142</a></p></div></div></article>
+   <div class="timeline-item event"><span class="badge"><svg class="svg"><use href="#i-git-commit"/></svg></span><div class="detail"><strong>lin.zhao</strong> 添加了 3 次代码提交 · 3 小时前<div class="pr-commits"><div class="pr-commit"><span class="avatar">L</span><span class="commit-message">feat(scheduler): 引入分层时间轮以降低调度延迟</span><span class="commit-hash">a3f9c21</span></div><div class="pr-commit"><span class="avatar">L</span><span class="commit-message">test: 覆盖跨轮推进场景</span><span class="commit-hash">7be0d44</span></div><div class="pr-commit"><span class="avatar">L</span><span class="commit-message">perf: 复用到期任务切片，减少分配</span><span class="commit-hash">e19b6f0</span></div></div></div></div>
+   <div class="timeline-item event"><span class="badge"><svg class="svg"><use href="#i-tag"/></svg></span><div class="detail"><strong>chen.yu</strong> 添加了标签 <span class="ui label label-performance">性能</span> <span class="ui label label-feature">功能</span> · 2 小时前</div></div>
+   <article class="timeline-item comment"><span class="timeline-avatar avatar avatar-c">C</span><div class="content"><div class="pr-comment-header"><svg class="svg approved"><use href="#i-check-circle"/></svg><strong>chen.yu</strong><span>批准了这些代码变更 · 1 小时前</span></div><div class="pr-comment-body"><div class="diff-file-box"><div class="diff-file-header">internal/scheduler/scheduler.go</div><div class="file-body file-code code-diff code-diff-unified"><table aria-label="示例代码变更"><tbody id="pr-inline-diff"></tbody></table></div></div><p>推进和派发拆开之后清晰很多。LGTM。</p></div></div></article>
+   <div class="timeline-item comment"><span class="timeline-avatar avatar avatar-z"><svg class="svg"><use href="#i-pull"/></svg></span><div class="content pr-checks"><div class="pr-checks-header"><svg class="svg"><use href="#i-check-circle"/></svg>所有检查均已通过</div><div class="pr-check-list"><div class="pr-check-row"><svg class="svg"><use href="#i-check"/></svg><span>CI / build (push)</span><span class="muted">成功 · 1m 12s</span></div><div class="pr-check-row"><svg class="svg"><use href="#i-check"/></svg><span>CI / test -race (push)</span><span class="muted">成功 · 3m 48s</span></div><div class="pr-check-row"><svg class="svg"><use href="#i-check"/></svg><span>CI / lint (push)</span><span class="muted">成功 · 41s</span></div></div><div class="pr-merge-actions"><button type="button" class="ui primary button" data-dialog-title="合并请求示例" data-dialog-text="此处展示合并按钮状态，未向任何服务器发出请求，也不会合并代码。">创建合并提交</button><label><input type="checkbox" checked>合并后删除分支</label></div></div></div>
+  </div><aside class="pr-sidebar"><div class="repo-sidebar-section"><h3>审核者</h3><div class="pr-person"><span class="avatar avatar-c">C</span>chen.yu<span class="approved">已批准</span></div><div class="pr-person"><span class="avatar avatar-w">W</span>wu.min<span class="muted">等待中</span></div></div><div class="repo-sidebar-section"><h3>标签</h3><span class="ui label label-performance">性能</span> <span class="ui label label-feature">功能</span></div><div class="repo-sidebar-section"><h3>里程碑</h3><p>v2.4</p><progress max="100" value="64" aria-label="示例里程碑完成 64%"></progress></div><div class="repo-sidebar-section"><h3>指派人</h3><div class="pr-person"><span class="avatar">L</span>lin.zhao</div></div><div class="repo-sidebar-section"><h3>3 位参与者</h3><span class="avatar">L</span> <span class="avatar avatar-c">C</span> <span class="avatar avatar-w">W</span></div></aside></div>
+  <div id="pr-commits" class="ui segment pr-empty-tab" role="tabpanel" hidden><h2 class="ui header">3 次代码提交</h2><div class="pr-commits"><div class="pr-commit"><span class="commit-message">feat(scheduler): 引入分层时间轮以降低调度延迟</span><span class="commit-hash">a3f9c21</span></div><div class="pr-commit"><span class="commit-message">test: 覆盖跨轮推进场景</span><span class="commit-hash">7be0d44</span></div><div class="pr-commit"><span class="commit-message">perf: 复用到期任务切片，减少分配</span><span class="commit-hash">e19b6f0</span></div></div></div>
+  <div id="pr-files" role="tabpanel" hidden><div class="diff-file-box"><div class="diff-file-header">internal/scheduler/scheduler.go · 展示其中 1 个示例文件</div><div class="file-body file-code code-diff code-diff-unified"><table aria-label="示例完整变更"><tbody id="pr-full-diff"></tbody></table></div></div></div>
+ </section>
+</main>
+
+<main id="page-dash" class="page-content dashboard feeds" aria-label="示例仪表板" hidden><div class="ui container"><div class="dashboard-navbar"><span class="avatar medium">L</span><strong>lin.zhao</strong><span class="ui basic label">示例工作区</span></div><div class="flex-container"><section class="flex-container-main"><div class="ui segment activity-summary"><h2>1,284 <small>次贡献 · 过去 12 个月</small></h2><div class="activity-heatmap" role="img" aria-label="示例贡献图，不代表真实用户活动"><div class="activity-heatmap-grid"><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span><span data-level="3" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="4" aria-hidden="true"></span><span data-level="0" aria-hidden="true"></span><span data-level="1" aria-hidden="true"></span><span data-level="2" aria-hidden="true"></span></div></div><p class="heatmap-caption">示例活动分布 · 用于查看主题层次与状态颜色</p></div><div id="activity-feed" class="flex-divided-list items-with-main"><div class="item"><div class="item-leading"><span class="avatar medium">L</span></div><div class="item-main tw-gap-2"><div><a href="#dash" data-page="dash">lin.zhao</a> 推送到 <a href="#repo" data-page="repo">nebula-lab/quantum-core</a> 的 feat/hierarchical-wheel 分支 <span class="meta">3 小时前</span></div><div class="commit-list"><span><code>a3f9c21</code> feat(scheduler): 引入分层时间轮以降低调度延迟</span></div></div><div class="item-trailing"><svg class="svg"><use href="#i-commit"/></svg></div></div><div class="item"><div class="item-leading"><span class="avatar medium">C</span></div><div class="item-main tw-gap-2"><div><a href="#dash" data-page="dash">chen.yu</a> 批准了 <a href="#repo" data-page="repo">nebula-lab/quantum-core</a> 的 合并请求 #128 <span class="meta">1 小时前</span></div><div class="commit-list"><span><code>7be0d44</code> test: 覆盖跨轮推进场景</span></div></div><div class="item-trailing"><svg class="svg"><use href="#i-commit"/></svg></div></div><div class="item"><div class="item-leading"><span class="avatar medium">W</span></div><div class="item-main tw-gap-2"><div><a href="#dash" data-page="dash">wu.min</a> 创建了 <a href="#repo" data-page="repo">nebula-lab/quantum-core</a> 的 工单 #142 <span class="meta">2 小时前</span></div><div class="commit-list"><span><code>e19b6f0</code> 记录调度器的异常处理行为</span></div></div><div class="item-trailing"><svg class="svg"><use href="#i-commit"/></svg></div></div><div class="item"><div class="item-leading"><span class="avatar medium">L</span></div><div class="item-main tw-gap-2"><div><a href="#dash" data-page="dash">lin.zhao</a> 发布了 <a href="#repo" data-page="repo">nebula-lab/quantum-core</a> 的 版本 v2.3.1 <span class="meta">2 天前</span></div><div class="commit-list"><span><code>c4d26f1</code> release: 更新集群部署说明</span></div></div><div class="item-trailing"><svg class="svg"><use href="#i-commit"/></svg></div></div><div class="item"><div class="item-leading"><span class="avatar medium">Z</span></div><div class="item-main tw-gap-2"><div><a href="#dash" data-page="dash">zhou.qi</a> 更新了 <a href="#repo" data-page="repo">nebula-lab/quantum-core</a> 的 文档目录 <span class="meta">3 天前</span></div><div class="commit-list"><span><code>f86b1a0</code> docs: 补充启动步骤与常见问题</span></div></div><div class="item-trailing"><svg class="svg"><use href="#i-commit"/></svg></div></div></div></section><aside id="dashboard-repo-list" class="flex-container-sidebar"><div><div class="ui two item menu"><a class="active item" href="#dash" data-page="dash">仓库</a><a class="item" href="#org" data-dialog-title="组织" data-dialog-text="这是本地虚构组织示例。">组织</a></div><div class="ui tab active list dashboard-repos"><h4 class="ui top attached header">仓库列表 <span class="ui small label">6</span></h4><div class="ui attached segment repos-search"><div class="ui icon input"><svg class="svg"><use href="#i-search"/></svg><input id="dashboard-repo-search" type="search" placeholder="搜索仓库…" aria-label="查找示例仓库"></div><div class="ui secondary pointing tabular borderless menu repos-filter"><a class="active item" href="#dash" data-page="dash">所有</a><a class="item" href="#self" data-dialog-title="自建仓库" data-dialog-text="这里展示筛选按钮的主题状态。">自建</a><a class="item" href="#fork" data-dialog-title="派生仓库" data-dialog-text="这里展示筛选按钮的主题状态。">派生</a></div></div><div class="ui attached table segment tw-rounded-b"><ul class="repo-owner-name-list"><li data-repository="quantum-core"><a class="repo-list-link muted" href="#repo" data-page="repo"><svg class="svg"><use href="#i-repo"/></svg><div>nebula-lab/quantum-core</div></a></li><li data-repository="orbit-ui"><a class="repo-list-link muted" href="#repo" data-dialog-title="orbit-ui" data-dialog-text="关联仓库为虚构预览数据。"><svg class="svg"><use href="#i-repo"/></svg><div>nebula-lab/orbit-ui</div></a></li><li data-repository="stellar-cli"><a class="repo-list-link muted" href="#repo" data-dialog-title="stellar-cli" data-dialog-text="关联仓库为虚构预览数据。"><svg class="svg"><use href="#i-repo"/></svg><div>nebula-lab/stellar-cli</div></a></li><li data-repository="pulsar-sdk-go"><a class="repo-list-link muted" href="#repo" data-dialog-title="pulsar-sdk-go" data-dialog-text="关联仓库为虚构预览数据。"><svg class="svg"><use href="#i-repo"/></svg><div>nebula-lab/pulsar-sdk-go</div></a></li><li data-repository="nebula-docs"><a class="repo-list-link muted" href="#repo" data-dialog-title="nebula-docs" data-dialog-text="关联仓库为虚构预览数据。"><svg class="svg"><use href="#i-repo"/></svg><div>nebula-lab/nebula-docs</div></a></li><li data-repository="lab-infra"><a class="repo-list-link muted" href="#repo" data-dialog-title="lab-infra" data-dialog-text="关联仓库为虚构预览数据。"><svg class="svg"><use href="#i-repo"/></svg><div>nebula-lab/lab-infra</div></a></li></ul><p id="dashboard-empty" class="muted" hidden>没有匹配的示例仓库。</p></div></div><div class="ui tab list dashboard-orgs"><h4 class="ui top attached header">组织</h4><div class="ui attached segment"><span class="avatar avatar-c">N</span><strong>nebula-lab</strong><span class="muted">6 个仓库</span></div></div></div></aside></div></div></main>
+
+
+<main id="page-settings" class="page-content user settings" aria-label="用户外观设置示例" hidden><div class="ui container flex-container"><aside class="flex-container-nav"><div class="ui fluid vertical menu"><div class="header item">用户设置</div><a class="item" href="#settings" data-page="settings">个人信息</a><a class="item" href="#settings" data-page="settings">账号</a><a class="item active" href="#settings" data-page="settings">外观</a><a class="item" href="#settings" data-page="settings">安全</a><a class="item" href="#settings" data-page="settings">应用</a><a class="item" href="#settings" data-page="settings">SSH / GPG 密钥</a><a class="item" href="#settings" data-page="settings">审计日志</a><a class="item" href="#settings" data-page="settings">组织</a><a class="item" href="#settings" data-page="settings">仓库列表</a></div></aside><div class="flex-container-main"><div class="user-setting-content">
+<h4 class="ui top attached header">选择默认主题</h4><div class="ui attached segment"><form class="ui form" data-preview-settings-form="theme"><div class="field preview-setting-help">选择你喜欢的日间、夜间或自动外观。这里的操作只更新当前离线预览。</div><div class="field"><label for="settings-theme">主题</label><select id="settings-theme" class="ui selection dropdown"><option value="light">Nebula · 日间</option><option value="dark">Nebula · 夜间</option><option value="auto" selected>Nebula · 自动</option></select></div><div class="field"><button type="submit" class="ui primary button">更新主题</button></div></form></div>
+<h4 class="ui top attached header">界面语言</h4><div class="ui attached segment"><form class="ui form" data-preview-settings-form="language"><div class="field"><label for="settings-language">语言</label><select id="settings-language" class="ui selection dropdown"><option>简体中文</option><option>English</option></select></div><div class="field"><button type="submit" class="ui primary button">更新语言</button></div></form></div>
+<h4 class="ui top attached header">隐藏的评论类型</h4><div class="ui attached segment"><p class="preview-setting-help">选中的事件类型会在本地示例中标记为隐藏，不会提交到服务器。</p><form class="ui form" data-preview-settings-form="comments"><div class="inline field"><div class="ui checkbox"><input type="checkbox" id="settings-comment-0"><label for="settings-comment-0">引用</label></div></div><div class="inline field"><div class="ui checkbox"><input type="checkbox" id="settings-comment-1"><label for="settings-comment-1">标签</label></div></div><div class="inline field"><div class="ui checkbox"><input type="checkbox" id="settings-comment-2"><label for="settings-comment-2">里程碑</label></div></div><div class="inline field"><div class="ui checkbox"><input type="checkbox" id="settings-comment-3"><label for="settings-comment-3">被指派人</label></div></div><div class="inline field"><div class="ui checkbox"><input type="checkbox" id="settings-comment-4"><label for="settings-comment-4">标题</label></div></div><div class="inline field"><div class="ui checkbox"><input type="checkbox" id="settings-comment-5"><label for="settings-comment-5">分支</label></div></div><div class="field"><button type="submit" class="ui primary button">保存</button></div></form></div></div></div></div></main>
+
+<main id="page-login" class="page-content user signin" aria-label="登录外观示例" hidden><div class="ui container"><div class="signin-brand"><span class="preview-brand-mark"><svg class="svg"><use href="#i-hexagon"/></svg></span><p>欢迎回来，继续你的创造。</p></div><h1 class="ui top attached header center">登录 Gitea</h1><div class="ui attached segment"><form id="preview-login-form" class="ui form" novalidate autocomplete="off"><div class="required field" id="username-field"><label for="user_name">用户名或邮箱</label><input id="user_name" name="demo_user_name" type="text" placeholder="例如 lin.zhao" aria-describedby="username-error" autocomplete="off"><p id="username-error" class="error message" role="alert"></p></div><div class="required field" id="password-field"><div class="signin-password-label"><label for="password">密码</label><a href="#forgot" data-dialog-title="忘记密码" data-dialog-text="这是本地登录外观演示，没有连接账户服务，也不会发送找回密码邮件。">忘记密码？</a></div><input id="password" name="demo_password" type="password" placeholder="输入任意 6 位以上示例内容" aria-describedby="password-error" autocomplete="off"><p id="password-error" class="error message" role="alert"></p></div><div class="inline field"><label class="signin-remember"><input type="checkbox" id="remember-demo">记住我</label></div><div class="field"><button id="login-submit" type="submit" class="ui primary button signin-submit">登录</button></div><div id="login-result" class="signin-local-result" role="status" hidden></div></form></div><div class="signin-demo-actions"><button type="button" id="fill-demo-login">填入示例</button><button type="button" id="show-login-errors">查看错误状态</button><button type="button" id="reset-login">重置</button></div><p class="signin-note">离线表单示例，仅在浏览器内校验，无需真实账号。<br>提交后展示加载状态，不发送网络请求。</p></div></main>
+
+<footer class="site-footer"><div class="ui container"><span>由 Gitea 驱动 · Nebula 2 外观预览 · 全部内容为示例</span><span>简体中文　 <a href="#license" data-dialog-title="关于本预览" data-dialog-text="本地六页面示例，加载与交付主题相同的 CSS。所有输入与交互仅保留在当前页面，不连接真实 Gitea。">关于</a>　<a href="#repo" data-page="repo">回到仓库</a></span></div></footer>
+<dialog id="preview-dialog" class="preview-dialog" aria-labelledby="preview-dialog-title"><div class="preview-dialog-head"><h2 id="preview-dialog-title"></h2><button type="button" class="preview-icon-button" id="dialog-close" aria-label="关闭"><svg class="svg"><use href="#i-close"/></svg></button></div><div class="preview-dialog-body"><p id="preview-dialog-text"></p><div class="preview-dialog-actions"><button class="ui primary button" type="button" id="dialog-done">知道了</button></div></div></dialog><div id="preview-toast" class="preview-toast" role="status" hidden></div>
+<script>
+const NEBULA_THEMES = {light: __LIGHT_CSS_JSON__, dark: __THEME_CSS_JSON__, auto: __AUTO_CSS_JSON__};
+__PREVIEW_INTERACTIONS_JS__
+</script></body></html>

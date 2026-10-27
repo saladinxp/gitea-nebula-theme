@@ -1,0 +1,181 @@
+/* NEBULA_INNER_PAGES_2_1_2_BEGIN */
+/* Nebula 2.1.2: calm, opaque reading surfaces for native Gitea 28.2.0.
+ * Selectors follow the upstream settings/dashboard/file-view templates.
+ * Use current palette colors so light, dark and automatic modes stay in sync.
+ */
+:root {
+  --nb-inner-panel: color-mix(in srgb, var(--color-box-body) 93%, var(--color-primary) 7%);
+  --nb-inner-reading: color-mix(in srgb, var(--color-box-body) 96%, var(--color-primary) 4%);
+  --nb-inner-sidebar: color-mix(in srgb, var(--color-body) 95%, var(--color-primary) 5%);
+  --nb-inner-header: color-mix(in srgb, var(--color-box-header) 92%, var(--color-primary) 8%);
+  --nb-inner-border: color-mix(in srgb, var(--color-secondary) 88%, var(--color-primary) 12%);
+  --nb-inner-hover: color-mix(in srgb, var(--nb-inner-panel) 94%, var(--color-primary) 6%);
+  --nb-inner-selected: color-mix(in srgb, var(--nb-inner-panel) 88%, var(--color-primary) 12%);
+}
+
+/* Settings: attached headers/segments retain their native form and menu flow.
+ * Leave input backgrounds, validation colors and dropdown layers to Gitea.
+ */
+.page-content.user.settings .user-setting-content > .ui.top.attached.header:not(.error, .warning, .red, .negative, .positive, .success) {
+  background: var(--nb-inner-header);
+  border-color: var(--nb-inner-border);
+  border-radius: 12px 12px 0 0;
+}
+.page-content.user.settings .user-setting-content > .ui.attached.segment:not(.error, .warning, .red, .negative, .positive, .success) {
+  background: var(--nb-inner-panel);
+  border-color: var(--nb-inner-border);
+  box-shadow: var(--nb-panel-shadow);
+}
+.page-content.user.settings .user-setting-content > .ui.attached.segment:not(.error, .warning, .red, .negative, .positive, .success):has(+ .ui.top.attached.header),
+.page-content.user.settings .user-setting-content > .ui.attached.segment:not(.error, .warning, .red, .negative, .positive, .success):last-child {
+  border-radius: 0 0 12px 12px;
+}
+.page-content.user.settings .flex-container-nav > .ui.vertical.menu {
+  background: var(--nb-inner-sidebar);
+  border-color: var(--nb-inner-border);
+  border-radius: 12px;
+  box-shadow: var(--nb-panel-shadow);
+}
+.page-content.user.settings .flex-container-nav > .ui.vertical.menu > .header.item {
+  background: var(--nb-inner-header);
+  border-radius: 11px 11px 0 0;
+}
+.page-content.user.settings .flex-container-nav > .ui.vertical.menu > a.item:hover {
+  background: var(--nb-inner-hover);
+}
+.page-content.user.settings .flex-container-nav > .ui.vertical.menu > a.active.item {
+  background: var(--nb-inner-selected);
+  color: var(--color-text-dark);
+  box-shadow: inset 3px 0 var(--color-primary);
+  font-weight: 600;
+}
+
+/* Dashboard: one quiet activity panel, plus coordinated repository cards.
+ * No per-entry effects, no backdrop blur and no change to list ordering.
+ */
+.dashboard #activity-feed {
+  background: var(--nb-inner-reading);
+  border: 1px solid var(--nb-inner-border);
+  border-radius: 12px;
+  box-shadow: var(--nb-panel-shadow);
+  padding: 4px 18px;
+}
+.dashboard #activity-feed > .item {
+  border-color: var(--color-secondary);
+}
+.dashboard :is(.dashboard-repos, .dashboard-orgs) > .ui.top.attached.header {
+  background: var(--nb-inner-header);
+  border-color: var(--nb-inner-border);
+  border-radius: 12px 12px 0 0;
+}
+.dashboard :is(.dashboard-repos, .dashboard-orgs) > .ui.attached.segment {
+  background: var(--nb-inner-panel);
+  border-color: var(--nb-inner-border);
+}
+.dashboard :is(.dashboard-repos, .dashboard-orgs) > .ui.attached.segment:last-child {
+  border-radius: 0 0 12px 12px;
+  box-shadow: var(--nb-panel-shadow);
+}
+.dashboard #dashboard-repo-list > div > .ui.two.item.menu {
+  background: var(--nb-inner-panel);
+  border-color: var(--nb-inner-border);
+  border-radius: 10px;
+}
+.dashboard #dashboard-repo-list > div > .ui.two.item.menu > .active.item {
+  background: var(--nb-inner-selected);
+  color: var(--color-text-dark);
+}
+.dashboard :is(.dashboard-repos, .dashboard-orgs) .repo-owner-name-list > li {
+  background: transparent;
+  border-color: var(--color-secondary);
+}
+.dashboard :is(.dashboard-repos, .dashboard-orgs) .repo-owner-name-list > li:is(:hover, :focus-within) {
+  background: var(--nb-inner-hover);
+}
+.dashboard :is(.dashboard-repos, .dashboard-orgs) .repo-owner-name-list > li.active {
+  background: var(--nb-inner-selected);
+  box-shadow: inset 3px 0 var(--color-primary);
+}
+
+/* File tree: the native sticky container supplies a solid shield behind text.
+ * Keep its display, height, flex sizing, scrolling and mobile hiding unchanged.
+ */
+.repository .repo-view-file-tree-container {
+  background: var(--nb-inner-sidebar);
+  border: 1px solid var(--nb-inner-border);
+  border-radius: 12px;
+  box-shadow: var(--nb-panel-shadow);
+}
+.repository .repo-view-file-tree-container > .repo-button-row {
+  background: var(--nb-inner-header);
+  border-bottom: 1px solid var(--nb-inner-border);
+  border-radius: 11px 11px 0 0;
+  margin-top: 0;
+  margin-bottom: 4px;
+  padding: 10px 8px;
+}
+.repository #view-file-tree {
+  background: var(--nb-inner-sidebar);
+}
+.repository #view-file-tree .tree-item:hover {
+  background: var(--nb-inner-hover);
+}
+.repository #view-file-tree .tree-item.selected,
+.repository #view-file-tree .tree-item.selected:hover {
+  background: var(--nb-inner-selected);
+  color: var(--color-text-dark);
+  box-shadow: inset 2px 0 var(--color-primary);
+}
+.repository #view-file-tree .sub-items {
+  border-color: var(--nb-inner-border);
+}
+#repo-files-table .repo-file-item:is(:hover, :focus-within) > .repo-file-cell,
+#repo-files-table .parent-link:hover {
+  background: color-mix(in srgb, var(--color-body) 88%, var(--color-primary) 12%);
+}
+
+/* Standalone file commit summary, also used above rendered documents. */
+.repository #repo-file-commit-box {
+  background: var(--nb-inner-panel);
+  border-color: var(--nb-inner-border);
+  border-radius: 12px;
+  box-shadow: var(--nb-panel-shadow);
+}
+
+/* Rendered documents and README: opaque paper with a bounded reading measure.
+ * Scope to markup, keeping source code, media, CSV and diff layouts separate.
+ */
+.repository .non-diff-file-content > .file-header {
+  background: var(--nb-inner-header);
+  border-color: var(--nb-inner-border);
+  border-radius: 12px 12px 0 0;
+}
+.repository .non-diff-file-content > .file-view-container:has(> .file-view.markup:not(.csv)) {
+  background: var(--nb-inner-reading);
+  border-color: var(--nb-inner-border);
+  border-radius: 0 0 12px 12px;
+  box-shadow: var(--nb-panel-shadow);
+}
+.repository .non-diff-file-content > .file-view-container > .file-view.markup:not(.csv) {
+  background: var(--nb-inner-reading);
+  color: var(--color-text);
+  box-sizing: border-box;
+  max-width: 72rem;
+  margin-inline: auto;
+  line-height: 1.85 !important;
+}
+.repository .non-diff-file-content > .file-view-container > .file-view.markup:not(.csv) :is(img, video) {
+  background-color: var(--nb-inner-reading);
+}
+.repository .non-diff-file-content > .file-view-container > .file-view.markup:not(.csv) th {
+  background: var(--nb-inner-header);
+  color: var(--color-text-dark);
+}
+
+@media (max-width: 767.98px) {
+  .dashboard #activity-feed { padding-inline: 12px; }
+  .repository .non-diff-file-content > .file-view-container > .file-view.markup:not(.csv):not(:has(.file-not-rendered-prompt)) {
+    padding-inline: 18px;
+  }
+}
+/* NEBULA_INNER_PAGES_2_1_2_END */

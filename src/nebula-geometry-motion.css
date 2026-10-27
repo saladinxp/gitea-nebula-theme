@@ -1,0 +1,24 @@
+/* NEBULA_GEOMETRY_MOTION_2_1_1_BEGIN */
+/* More visible drift on the existing two decorative layers.
+ * Keep the original geometry and accessibility rules; no new layer or script.
+ */
+body::before {
+  animation-duration: 18s;
+  animation-delay: -3s;
+}
+body::after {
+  animation-duration: 22s;
+  animation-delay: -7s;
+}
+@keyframes nebula-geometry-left {
+  0%, 100% { transform: translate3d(0, 20px, 0) rotate(-2deg); }
+  50% { transform: translate3d(3px, -64px, 0) rotate(2deg); }
+}
+@keyframes nebula-geometry-right {
+  0%, 100% { transform: translate3d(0, -44px, 0) rotate(2deg); }
+  50% { transform: translate3d(-3px, 52px, 0) rotate(-2deg); }
+}
+@media (max-width: 767.98px) {
+  body::before, body::after { animation-duration: 32s; }
+}
+/* NEBULA_GEOMETRY_MOTION_2_1_1_END */
